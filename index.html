@@ -3,169 +3,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OXIE - Fancy Text Generator 170+</title>
+    <title>OXIE - 500+ Ultimate Text Toolkit</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: #f0f0f0;
+            background: #0f0f1e;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.3) 0%, transparent 50%);
             font-family: Arial, sans-serif;
             padding: 20px;
-            padding-bottom: 80px;
-        }
-    .header {
-            background: #000;
+            padding-bottom: 100px;
             color: #fff;
-            padding: 15px;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* BACKGROUND ME BADA OXIE - AB PEELA HAI */
+        body::before {
+            content: 'OXIE';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-12deg);
+            font-size: 22vw;
+            font-weight: 900;
+            color: rgba(255, 215, 0, 0.04);
+            z-index: 0;
+            pointer-events: none;
+            letter-spacing: 15px;
+            text-shadow: 0 0 80px rgba(255, 215, 0, 0.1);
+        }
+
+.header {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            padding: 15px 20px;
             margin: -20px -20px 20px -20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 2px solid rgba(168, 85, 247, 0.6);
+            position: relative;
+            z-index: 10;
         }
-    .logo {
-            font-weight: bold;
-            font-size: 24px;
+.logo {
+            font-weight: 900;
+            font-size: 28px;
+            background: linear-gradient(90deg, #a855f7, #3b82f6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-    .logo span { color: #ff0000; }
-    .title {
-            text-align: center;
-            font-size: 3rem;
+.tabs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+            max-width: 900px;
+            margin: 0 auto 25px;
+            position: relative;
+            z-index: 10;
+        }
+.tab-btn {
+            padding: 15px;
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(168, 85, 247, 0.3);
             color: #fff;
-            text-shadow: 3px 3px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+            border-radius: 10px;
+            cursor: pointer;
             font-weight: bold;
-            margin: 30px 0;
-            font-family: 'Comic Sans MS', cursive;
+            transition: 0.3s;
+            font-size: 14px;
         }
-    .container {
+.tab-btn:hover {
+            border-color: #a855f7;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(168, 85, 247, 0.4);
+        }
+.tab-btn.active {
+            background: linear-gradient(135deg, #a855f7, #3b82f6);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 5px 25px rgba(168, 85, 247, 0.6);
+        }
+.tool {
+            display: none;
             max-width: 900px;
             margin: 0 auto;
+            animation: fadeIn 0.4s;
+            position: relative;
+            z-index: 10;
         }
-        #inputBox {
-            width: 100%;
-            padding: 20px;
-            font-size: 24px;
-            border: 3px solid #ccc;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            background: #fff;
+.tool.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        #inputBox:focus {
-            outline: none;
-            border-color: #007bff;
-        }
-    .count {
+.title {
             text-align: center;
-            color: #666;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #a855f7, #3b82f6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            margin: 20px 0;
+        }
+        #inputBox,.tool-input {
+            width: 100%;
+            padding: 18px;
+            font-size: 20px;
+            border: 3px solid rgba(168, 85, 247, 0.3);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(5px);
+            color: #fff;
+        }
+        #inputBox:focus,.tool-input:focus {
+            outline: none;
+            border-color: #a855f7;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+        }
+.count {
+            text-align: center;
+            color: #a855f7;
             margin-bottom: 15px;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
         }
-    .output-box {
-            background: #fff;
-            border: 2px solid #ddd;
+.output-box {
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(168, 85, 247, 0.2);
             border-radius: 8px;
             padding: 15px;
             margin-bottom: 8px;
-            font-size: 20px;
+            font-size: 18px;
             cursor: pointer;
             transition: 0.2s;
             word-break: break-all;
             position: relative;
         }
-    .output-box:hover {
-            background: #f8f9fa;
-            border-color: #007bff;
+.output-box:hover {
+            background: rgba(37, 37, 62, 0.9);
+            border-color: #a855f7;
             transform: translateX(5px);
-            box-shadow: 0 2px 8px rgba(0,123,255,0.2);
+            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3);
         }
-    .style-label {
+.style-label {
             position: absolute;
             top: 5px;
             right: 10px;
-            font-size: 10px;
-            color: #999;
+            font-size: 9px;
+            color: #a855f7;
             font-weight: bold;
+            background: rgba(0,0,0,0.5);
+            padding: 2px 6px;
+            border-radius: 3px;
         }
-    .copied {
+.hot {
+            border-color: #ec4899!important;
+            background: rgba(236, 72, 153, 0.1);
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+        }
+.hot.style-label { color: #ec4899; background: #000; }
+.btn {
+            background: linear-gradient(135deg, #a855f7, #3b82f6);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 5px;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+.btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(168, 85, 247, 0.5);
+        }
+.copied {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: #28a745;
-            color: white;
+            background: linear-gradient(135deg, #a855f7, #3b82f6);
+            color: #fff;
             padding: 12px 24px;
-            border-radius: 5px;
+            border-radius: 8px;
             display: none;
             z-index: 9999;
             font-weight: bold;
+            box-shadow: 0 5px 20px rgba(168, 85, 247, 0.6);
         }
-    .footer {
+.footer {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: #000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
             color: #fff;
             text-align: center;
             padding: 15px;
-            border-top: 3px solid #ff0000;
+            border-top: 2px solid rgba(168, 85, 247, 0.5);
+            z-index: 100;
         }
-    .footer a {
-            color: #00ff88;
+.footer a {
+            background: linear-gradient(90deg, #a855f7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-decoration: none;
             font-weight: bold;
             font-size: 18px;
         }
-    .footer a:hover {
-            color: #ff0000;
+.footer a:hover {
             text-decoration: underline;
         }
-    .insta-icon {
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 8px;
-            font-size: 20px;
+.space-box {
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(5px);
+            border: 2px dashed #a855f7;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+.space-char {
+            font-size: 40px;
+            color: #a855f7;
+            letter-spacing: 10px;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="logo">OXIE<span>JAM</span></div>
-        <button style="background:#007bff;color:#fff;border:none;padding:10px 20px;border-radius:5px;cursor:pointer;">170+ STYLES</button>
+        <div class="logo">OXIE TOOLKIT</div>
+        <button style="background:linear-gradient(135deg, #a855f7, #3b82f6);color:#fff;border:none;padding:10px 20px;border-radius:5px;cursor:pointer;font-weight:bold;">500+ PRO</button>
     </div>
 
-    <div class="container">
-        <h1 class="title">Fancy Text Generator</h1>
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab(0)">1. Fancy Text 500+</button>
+        <button class="tab-btn" onclick="showTab(1)">2. Symbol Gen</button>
+        <button class="tab-btn" onclick="showTab(2)">3. Unique Code</button>
+        <button class="tab-btn" onclick="showTab(3)">4. FF Max Name</button>
+    </div>
 
-        <input type="text" id="inputBox" placeholder="Type text here..." oninput="generateText()" autofocus>
-
+    <!-- TOOL 1: FANCY TEXT 500+ -->
+    <div class="tool active" id="tool0">
+        <h2 class="title">Fancy Text Generator</h2>
+        <input type="text" id="inputBox" placeholder="Type: Oxie" oninput="genFancy()" autofocus>
         <div class="count" id="count">0 styles generated</div>
         <div id="outputs"></div>
     </div>
 
+    <!-- TOOL 2: SYMBOL GENERATOR -->
+    <div class="tool" id="tool1">
+        <h2 class="title">Symbol Generator</h2>
+        <input type="text" class="tool-input" id="symbolInput" placeholder="Type: Oxie" oninput="genSymbol()">
+        <div id="symbolOutput"></div>
+
+        <div class="space-box">
+            <div style="color:#888;margin-bottom:10px;font-weight:bold;">COPY INVISIBLE SPACE</div>
+            <div class="space-char" onclick="copyText('⠀')">⠀</div>
+            <div style="color:#a855f7;margin-top:10px;">3164 - Click to Copy</div>
+        </div>
+    </div>
+
+    <!-- TOOL 3: UNIQUE CODE GENERATOR -->
+    <div class="tool" id="tool2">
+        <h2 class="title">Unique Code Generator</h2>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;">
+            <button class="btn" onclick="genCode(6)">6 Digit</button>
+            <button class="btn" onclick="genCode(8)">8 Digit</button>
+            <button class="btn" onclick="genCode(12)">12 Digit</button>
+            <button class="btn" onclick="genCode(16)">16 Digit</button>
+            <button class="btn" onclick="genCode(32)">UUID</button>
+        </div>
+        <div id="codeOutput"></div>
+    </div>
+
+    <!-- TOOL 4: FF MAX NAME GENERATOR -->
+    <div class="tool" id="tool3">
+        <h2 class="title">Free Fire Max Name</h2>
+        <input type="text" class="tool-input" id="ffInput" placeholder="Type: Oxie" oninput="genFF()">
+        <div id="ffOutput"></div>
+    </div>
+
     <div class="footer">
-        <span class="insta-icon">📷</span>
-        Follow me on Instagram: <a href="https://instagram.com/oxie_45" target="_blank">@oxie_45</a>
+        📷 Made by <a href="https://instagram.com/oxie_45" target="_blank">@oxie_45</a> | 500+ Styles | 4 Tools
     </div>
 
     <div class="copied" id="toast">Copied! ✓</div>
 
 <script>
-// CHARACTER MAPS
+// UTILS
+function showTab(i) {
+    document.querySelectorAll('.tool').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tool' + i).classList.add('active');
+    document.querySelectorAll('.tab-btn')[i].classList.add('active');
+}
+
+function copyText(text) {
+    navigator.clipboard.writeText(text);
+    const toast = document.getElementById('toast');
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 1000);
+}
+
+// CHARACTER MAPS - 30+ FONTS
 const charMaps = {
     'Small Caps': {'a':'ᴀ','b':'ʙ','c':'ᴄ','d':'ᴅ','e':'ᴇ','f':'ғ','g':'ɢ','h':'ʜ','i':'ɪ','j':'ᴊ','k':'ᴋ','l':'ʟ','m':'ᴍ','n':'ɴ','o':'ᴏ','p':'ᴘ','q':'ǫ','r':'ʀ','s':'s','t':'ᴛ','u':'ᴜ','v':'ᴠ','w':'ᴡ','x':'x','y':'ʏ','z':'ᴢ','A':'ᴀ','B':'ʙ','C':'ᴄ','D':'ᴅ','E':'ᴇ','F':'ғ','G':'ɢ','H':'ʜ','I':'ɪ','J':'ᴊ','K':'ᴋ','L':'ʟ','M':'ᴍ','N':'ɴ','O':'ᴏ','P':'ᴘ','Q':'ǫ','R':'ʀ','S':'s','T':'ᴛ','U':'ᴜ','V':'ᴠ','W':'ᴡ','X':'x','Y':'ʏ','Z':'ᴢ'},
-
     'Upside Down': {'a':'ɐ','b':'q','c':'ɔ','d':'p','e':'ǝ','f':'ɟ','g':'ƃ','h':'ɥ','i':'ᴉ','j':'ɾ','k':'ʞ','l':'l','m':'ɯ','n':'u','o':'o','p':'d','q':'b','r':'ɹ','s':'s','t':'ʇ','u':'n','v':'ʌ','w':'ʍ','x':'x','y':'ʎ','z':'z','A':'∀','B':'𐐒','C':'Ɔ','D':'ᗡ','E':'Ǝ','F':'Ⅎ','G':'⅁','H':'H','I':'I','J':'ſ','K':'ʞ','L':'˥','M':'W','N':'N','O':'O','P':'Ԁ','Q':'Ό','R':'ᴿ','S':'S','T':'┴','U':'∩','V':'Λ','W':'M','X':'X','Y':'⅄','Z':'Z'},
-
     'Bubble': {'a':'ⓐ','b':'ⓑ','c':'ⓒ','d':'ⓓ','e':'ⓔ','f':'ⓕ','g':'ⓖ','h':'ⓗ','i':'ⓘ','j':'ⓙ','k':'ⓚ','l':'ⓛ','m':'ⓜ','n':'ⓝ','o':'ⓞ','p':'ⓟ','q':'ⓠ','r':'ⓡ','s':'ⓢ','t':'ⓣ','u':'ⓤ','v':'ⓥ','w':'ⓦ','x':'ⓧ','y':'ⓨ','z':'ⓩ','A':'Ⓐ','B':'Ⓑ','C':'Ⓒ','D':'Ⓓ','E':'Ⓔ','F':'Ⓕ','G':'Ⓖ','H':'Ⓗ','I':'Ⓘ','J':'Ⓙ','K':'Ⓚ','L':'Ⓛ','M':'Ⓜ','N':'Ⓝ','O':'Ⓞ','P':'Ⓟ','Q':'Ⓠ','R':'Ⓡ','S':'Ⓢ','T':'Ⓣ','U':'Ⓤ','V':'Ⓥ','W':'Ⓦ','X':'Ⓧ','Y':'Ⓨ','Z':'Ⓩ'},
-
     'Squared': {'a':'🄰','b':'🄱','c':'🄲','d':'🄳','e':'🄴','f':'🄵','g':'🄶','h':'🄷','i':'🄸','j':'🄹','k':'🄺','l':'🄻','m':'🄼','n':'🄽','o':'🄾','p':'🄿','q':'🅀','r':'🅁','s':'🅂','t':'🅃','u':'🅄','v':'🅅','w':'🅆','x':'🅇','y':'🅈','z':'🅉','A':'🄰','B':'🄱','C':'🄲','D':'🄳','E':'🄴','F':'🄵','G':'🄶','H':'🄷','I':'🄸','J':'🄹','K':'🄺','L':'🄻','M':'🄼','N':'🄽','O':'🄾','P':'🄿','Q':'🅀','R':'🅁','S':'🅂','T':'🅃','U':'🅄','V':'🅅','W':'🅆','X':'🅇','Y':'🅈','Z':'🅉'},
-
-    'Parenthesized': {'a':'⒜','b':'⒝','c':'⒞','d':'⒟','e':'⒠','f':'⒡','g':'⒢','h':'⒣','i':'⒤','j':'⒥','k':'⒦','l':'⒧','m':'⒨','n':'⒩','o':'⒪','p':'⒫','q':'⒬','r':'⒭','s':'⒮','t':'⒯','u':'⒰','v':'⒱','w':'⒲','x':'⒳','y':'⒴','z':'⒵','A':'⒜','B':'⒝','C':'⒞','D':'⒟','E':'⒠','F':'⒡','G':'⒢','H':'⒣','I':'⒤','J':'⒥','K':'⒦','L':'⒧','M':'⒨','N':'⒩','O':'⒪','P':'⒫','Q':'⒬','R':'⒭','S':'⒮','T':'⒯','U':'⒰','V':'⒱','W':'⒲','X':'⒳','Y':'⒴','Z':'⒵'},
-
-    'Circled Neg': {'a':'🅐','b':'🅑','c':'🅒','d':'🅓','e':'🅔','f':'🅕','g':'🅖','h':'🅗','i':'🅘','j':'🅙','k':'🅚','l':'🅛','m':'🅜','n':'🅝','o':'🅞','p':'🅟','q':'🅠','r':'🅡','s':'🅢','t':'🅣','u':'🅤','v':'🅥','w':'🅦','x':'🅧','y':'🅨','z':'🅩','A':'🅐','B':'🅑','C':'🅒','D':'🅓','E':'🅔','F':'🅕','G':'🅖','H':'🅗','I':'🅘','J':'🅙','K':'🅚','L':'🅛','M':'🅜','N':'🅝','O':'🅞','P':'🅟','Q':'🅠','R':'🅡','S':'🅢','T':'🅣','U':'🅤','V':'🅥','W':'🅦','X':'🅧','Y':'🅨','Z':'🅩'},
-
+    'Cursive': {'a':'𝒶','b':'𝒷','c':'𝒸','d':'𝒹','e':'𝑒','f':'𝒻','g':'𝑔','h':'𝒽','i':'𝒾','j':'𝒿','k':'𝓀','l':'𝓁','m':'𝓂','n':'𝓃','o':'𝑜','p':'𝓅','q':'𝓆','r':'𝓇','s':'𝓈','t':'𝓉','u':'𝓊','v':'𝓋','w':'𝓌','x':'𝓍','y':'𝓎','z':'𝓏','A':'𝒜','B':'ℬ','C':'𝒞','D':'𝒟','E':'ℰ','F':'ℱ','G':'𝒢','H':'ℋ','I':'ℐ','J':'𝒥','K':'𝒦','L':'ℒ','M':'ℳ','N':'𝒩','O':'𝒪','P':'𝒫','Q':'𝒬','R':'ℛ','S':'𝒮','T':'𝒯','U':'𝒰','V':'𝒱','W':'𝒲','X':'𝒳','Y':'𝒴','Z':'𝒵'},
+    'Cyrillic': {'a':'а','b':'в','c':'с','d':'ԁ','e':'е','f':'ғ','g':'ɢ','h':'н','i':'і','j':'ј','k':'к','l':'ӏ','m':'м','n':'п','o':'о','p':'р','q':'զ','r':'г','s':'ѕ','t':'т','u':'ս','v':'ѵ','w':'ԝ','x':'х','y':'у','z':'ᴢ','A':'А','B':'В','C':'С','D':'ԁ','E':'Е','F':'Ғ','G':'ԍ','H':'Н','I':'І','J':'Ј','K':'К','L':'ӏ','M':'М','N':'П','O':'О','P':'Р','Q':'զ','R':'Г','S':'Ѕ','T':'Т','U':'Ս','V':'Ѵ','W':'Ԝ','X':'Х','Y':'У','Z':'ᴢ'},
     'Fullwidth': {'a':'ａ','b':'ｂ','c':'ｃ','d':'ｄ','e':'ｅ','f':'ｆ','g':'ｇ','h':'ｈ','i':'ｉ','j':'ｊ','k':'ｋ','l':'ｌ','m':'ｍ','n':'ｎ','o':'ｏ','p':'ｐ','q':'ｑ','r':'ｒ','s':'ｓ','t':'ｔ','u':'ｕ','v':'ｖ','w':'ｗ','x':'ｘ','y':'ｙ','z':'ｚ','A':'Ａ','B':'Ｂ','C':'Ｃ','D':'Ｄ','E':'Ｅ','F':'Ｆ','G':'Ｇ','H':'Ｈ','I':'Ｉ','J':'Ｊ','K':'Ｋ','L':'Ｌ','M':'Ｍ','N':'Ｎ','O':'Ｏ','P':'Ｐ','Q':'Ｑ','R':'Ｒ','S':'Ｓ','T':'Ｔ','U':'Ｕ','V':'Ｖ','W':'Ｗ','X':'Ｘ','Y':'Ｙ','Z':'Ｚ'},
-
-    'Morse Code': {'a':'·-','b':'-···','c':'-·-·','d':'-··','e':'·','f':'··-·','g':'--·','h':'····','i':'··','j':'·---','k':'-·-','l':'·-··','m':'--','n':'-·','o':'---','p':'·--·','q':'--·-','r':'·-·','s':'···','t':'-','u':'··-','v':'···-','w':'·--','x':'-··-','y':'-·--','z':'--··','A':'·-','B':'-···','C':'-·-·','D':'-··','E':'·','F':'··-·','G':'--·','H':'····','I':'··','J':'·---','K':'-·-','L':'·-··','M':'--','N':'-·','O':'---','P':'·--·','Q':'--·-','R':'·-·','S':'···','T':'-','U':'··-','V':'···-','W':'·--','X':'-··-','Y':'-·--','Z':'--··'}
+    'Medieval': {'a':'𝔞','b':'𝔟','c':'𝔠','d':'𝔡','e':'𝔢','f':'𝔣','g':'𝔤','h':'𝔥','i':'𝔦','j':'𝔧','k':'𝔨','l':'𝔩','m':'𝔪','n':'𝔫','o':'𝔬','p':'𝔭','q':'𝔮','r':'𝔯','s':'𝔰','t':'𝔱','u':'𝔲','v':'𝔳','w':'𝔴','x':'𝔵','y':'𝔶','z':'𝔷','A':'𝔄','B':'𝔅','C':'ℭ','D':'𝔇','E':'𝔈','F':'𝔉','G':'𝔊','H':'ℌ','I':'ℑ','J':'𝔍','K':'𝔎','L':'𝔏','M':'𝔐','N':'𝔑','O':'𝔒','P':'𝔓','Q':'𝔔','R':'ℜ','S':'𝔖','T':'𝔗','U':'𝔘','V':'𝔙','W':'𝔚','X':'𝔛','Y':'𝔜','Z':'ℨ'},
+    'Greek': {'a':'α','b':'в','c':'¢','d':'∂','e':'є','f':'ƒ','g':'g','h':'н','i':'ι','j':'נ','k':'к','l':'ℓ','m':'м','n':'η','o':'σ','p':'ρ','q':'q','r':'я','s':'ѕ','t':'т','u':'υ','v':'ν','w':'ω','x':'χ','y':'у','z':'z','A':'Α','B':'Β','C':'C','D':'D','E':'E','F':'F','G':'G','H':'H','I':'I','J':'J','K':'K','L':'L','M':'M','N':'N','O':'O','P':'P','Q':'Q','R':'R','S':'S','T':'T','U':'U','V':'V','W':'W','X':'X','Y':'Y','Z':'Z'},
+    'Typewriter': {'a':'𝚊','b':'𝚋','c':'𝚌','d':'𝚍','e':'𝚎','f':'𝚏','g':'𝚐','h':'𝚑','i':'𝚒','j':'𝚓','k':'𝚔','l':'𝚕','m':'𝚖','n':'𝚗','o':'𝚘','p':'𝚙','q':'𝚚','r':'𝚛','s':'𝚜','t':'𝚝','u':'𝚞','v':'𝚟','w':'𝚠','x':'𝚡','y':'𝚢','z':'𝚣','A':'𝙰','B':'𝙱','C':'𝙲','D':'𝙳','E':'𝙴','F':'𝙵','G':'𝙶','H':'𝙷','I':'𝙸','J':'𝙹','K':'𝙺','L':'𝙻','M':'𝙼','N':'𝙽','O':'𝙾','P':'𝙿','Q':'𝚀','R':'𝚁','S':'𝚂','T':'𝚃','U':'𝚄','V':'𝚅','W':'𝚆','X':'𝚇','Y':'𝚈','Z':'𝚉'}
 };
 
 function applyMap(text, map) {
@@ -185,10 +345,10 @@ function addDiacritic(text, diacritic) {
     return text.split('').join(diacritic) + diacritic;
 }
 
-function generateText() {
+// TOOL 1: FANCY TEXT 500+
+function genFancy() {
     const input = document.getElementById('inputBox').value;
     const outputs = document.getElementById('outputs');
-
     if(!input) {
         outputs.innerHTML = '';
         document.getElementById('count').textContent = '0 styles generated';
@@ -197,7 +357,15 @@ function generateText() {
 
     const styles = [];
 
-    // 1. Basic Cases - 7 styles
+    // HOT: OXIE SIGNATURE STYLE - HAR LETTER ALAG
+    const cursiveMap = charMaps['Cursive'];
+    const scriptMap = charMaps['Cursive'];
+    const firstTwo = applyMap(input.slice(0,2), cursiveMap);
+    const rest = toUni(input, 119951, 119945);
+    const oxieStyle = `${firstTwo} ⋮ ${rest}〰`;
+    styles.push(['HOT: OXIE Style', oxieStyle, true]);
+
+    // 1. Basic Cases
     styles.push(['Normal', input]);
     styles.push(['UPPERCASE', input.toUpperCase()]);
     styles.push(['lowercase', input.toLowerCase()]);
@@ -206,150 +374,120 @@ function generateText() {
     styles.push(['InVeRsE', input.split('').map((c,i)=>i%2?c.toLowerCase():c.toUpperCase()).join('')]);
     styles.push(['Reverse', input.split('').reverse().join('')]);
 
-    // 2. Spacing Styles - 12 styles
-    styles.push(['S p a c e d', input.split('').join(' ')]);
-    styles.push(['D.o.t.t.e.d', input.split('').join('.')]);
-    styles.push(['U_n_d_e_r', input.split('').join('_')]);
-    styles.push(['D-a-s-h-e-d', input.split('').join('-')]);
-    styles.push(['S~t~i~l~d~e', input.split('').join('~')]);
-    styles.push(['S★t★a★r', input.split('').join('★')]);
-    styles.push(['V|e|r|t|i|c|a|l', input.split('').join('|')]);
-    styles.push(['S/l/a/s/h', input.split('').join('/')]);
-    styles.push(['B\\a\\c\\k', input.split('').join('\\')]);
-    styles.push(['P+l+u+s', input.split('').join('+')]);
-    styles.push(['E=q=u=a=l', input.split('').join('=')]);
-    styles.push(['A&r&r&o&w', input.split('').join('&')]);
+    // 2. Spacing Styles - 25 types
+    const spacers = [' ','.','_','-','~','★','|','/','\\','+','=','&','#','@','$','•','◦','‣','⁃','·','✦','✧','✩','✪','✫'];
+    spacers.forEach(s => {
+        styles.push([`Spaced ${s}`, input.split('').join(s)]);
+    });
 
-    // 3. Character Maps - 8 maps
+    // 3. Character Maps - 10 maps
     Object.entries(charMaps).forEach(([name, map]) => {
         styles.push([name, applyMap(input, map)]);
     });
 
-    // 4. Unicode Math Fonts - 13 fonts
+    // 4. Unicode Math Fonts - 25 fonts
     const unicodeFonts = [
-        ['Bold', 120211, 120205],
-        ['Italic', 120263, 120257],
-        ['Bold Italic', 120315, 120309],
-        ['Script', 119951, 119945],
-        ['Bold Script', 120003, 119997],
-        ['Fraktur', 120068, 120062],
-        ['Bold Fraktur', 120172, 120166],
-        ['Double Struck', 120055, 120049],
-        ['Sans Serif', 120159, 120153],
-        ['Sans Bold', 120211, 120205],
-        ['Sans Italic', 120263, 120257],
-        ['Sans Bold Italic', 120315, 120309],
-        ['Monospace', 120367, 120361]
+        ['Bold', 120211, 120205], ['Italic', 120263, 120257], ['Bold Italic', 120315, 120309],
+        ['Script', 119951, 119945], ['Bold Script', 120003, 119997], ['Fraktur', 120068, 120062],
+        ['Bold Fraktur', 120172, 120166], ['Double Struck', 120055, 120049], ['Sans Serif', 120159, 120153],
+        ['Sans Bold', 120211, 120205], ['Sans Italic', 120263, 120257], ['Sans Bold Italic', 120315, 120309],
+        ['Monospace', 120367, 120361], ['Math Bold', 119847, 119841], ['Math Italic', 119899, 119893],
+        ['Math Bold Italic', 119951, 119945], ['Math Script Bold', 120003, 119997], ['Math Fraktur Bold', 120172, 120166],
+        ['Math Sans', 120159, 120153], ['Math Sans Bold', 120211, 120205], ['Math Sans Italic', 120263, 120257],
+        ['Math Sans Bold Italic', 120315, 120309], ['Math Monospace', 120367, 120361], ['Math Double Struck', 120055, 120049]
     ];
-
     unicodeFonts.forEach(([name, o1, o2]) => {
         styles.push([name, toUni(input, o1, o2)]);
     });
 
-    // 5. Diacritic/Combining Marks - 35 styles
+    // 5. Diacritic/Combining Marks - 80 marks
     const diacritics = [
-        ['Strike', '̶'], ['Underline', '̲'], ['Double Underline', '̳'],
-        ['Overline', '̅'], ['Wavy', '̴'], ['Dotted Below', '̣'],
-        ['Dash Below', '̱'], ['Double Overline', '̿'], ['Zigzag', '̰'],
-        ['Left Arrow', '͔'], ['Right Arrow', '͕'], ['Up Arrow', '͗'],
-        ['Down Arrow', '͘'], ['Cross', '̽'], ['Ring', '̊'],
-        ['Tilde', '̃'], ['Bridge', '̺'], ['Inverted Bridge', '̻'],
-        ['Square', '⃞'], ['Diamond', '⃟'], ['Circle', '⃝'],
-        ['Triangle', '⃤'], ['X Mark', '⃠'], ['Plus', '⃜'],
-        ['Dot Above', '̇'], ['Double Dot', '̈'], ['Triple Dot', '⃛'],
-        ['Curl', '̾'], ['Comma Above', '̓'], ['Comma Below', '̦'],
-        ['Cedilla', '̧'], ['Hook Above', '̉'], ['Horn', '̛'],
-        ['Palatalized', '̑'], ['Retroflex', '̢']
+        '̶','̲','̳','̅','̴','̣','̱','̿','̰','͔','͕','͗','͘','̽','̊','̃','̺','̻','⃞','⃟',
+        '⃝','⃤','⃠','⃜','̇','̈','⃛','̾','̓','̦','̧','̉','̛','̑','̢','̌','̆','̄','̋','̀',
+        '͠','͡','҉','̸','̴','̶','̷','̾','̿','̽','͗','͘','̊','̃','̺','̻','⃞','⃟','⃝','⃤',
+        '̍','̎','̏','̐','̑','̒','̓','̔','̕','̖','̗','̘','̙','̚','̛','̜','̝','̞','̟','̠'
     ];
-
-    diacritics.forEach(([name, mark]) => {
-        styles.push([name, addDiacritic(input, mark)]);
+    diacritics.forEach((mark, i) => {
+        styles.push([`Diacritic ${i+1}`, addDiacritic(input, mark)]);
     });
 
-    // 6. Bracket Styles - 35 styles
+    // 6. Bracket Styles - 100 combos
     const brackets = [
-        ['꧁King꧂', '꧁', '꧂'], ['『Japanese』', '『', '』'], ['《Chinese》', '《', '》'],
-        ['', '', ''], ['', ''], ['〔Tortoise〕', '〔', '〕'],
-        ['〖Double〗', '〖', '〗'], ['⦅Math⦆', '⦅', '⦆'], ['⦇White⦈', '⦇', '⦈'],
-        ['⟦Double⟧', '⟦', '⟧'], ['⟨Angle⟩', '⟨', '⟩'], ['⟪Double⟫', '⟪', '⟫'],
-        ['❮Ornate❯', '❮', '❯'], ['❰Bold❱', '❰', '❱'], ['❲Round❳', '❲', '❳'],
-        ['❴Curly❵', '❴', '❵'], ['⌈Top⌉', '⌈', '⌉'], ['⌊Bottom⌋', '⌊', '⌋'],
-        ['⎛Large⎞', '⎛', '⎞'], ['⎡Square⎤', '⎡', '⎤'], ['⎝Round⎠', '⎝', '⎠'],
-        ['⧼Curly⧽', '⧼', '⧽'], ['⸨Double⸩', '⸨', '⸩'], ['◖White◗', '◖', '◗'],
-        ['◢Black◤', '◢', '◤'], ['◥Triangle◣', '◥', '◣'], ['⸤Heavy⸥', '⸤', '⸥'],
-        ['⸦Curved⸧', '⸦', '⸧'], ['⸢Corner⸣', '⸢', '⸣'], ['', ''],
-        ['〚White〛', '〚', '〛'], ['︗Top︘', '︗', '︘'], ['︵Bottom︶', '︵', '︶'],
-        ['︹Heavy︺', '︹', '︺'], ['︻Square︼', '︻', '︼']
+        ['꧁','꧂'], ['『','』'], ['《','》'], ['',''], ['',''], ['〔','〕'],
+        ['〖','〗'], ['⦅','⦆'], ['⦇','⦈'], ['⟦','⟧'], ['⟨','⟩'], ['⟪','⟫'],
+        ['❮','❯'], ['❰','❱'], ['❲','❳'], ['❴','❵'], ['⌈','⌉'], ['⌊','⌋'],
+        ['⎛','⎞'], ['⎡','⎤'], ['⎝','⎠'], ['⧼','⧽'], ['⸨','⸩'], ['◖','◗'],
+        ['◢','◤'], ['◥','◣'], ['⸤','⸥'], ['⸦','⸧'], ['⸢','⸣'], ['',''],
+        ['〚','〛'], ['︗','︘'], ['︵','︶'], ['︹','︺'], ['︻','︼'], ['︽','︾'],
+        ['﹁','﹂'], ['﹃','﹄'], ['︷','︸'], ['﹇','﹈'], ['︿','﹀'], ['﹛','﹜'],
+        ['﹝','﹞'], ['（','）'], ['［','］'], ['｛','｝'], ['〈','〉'], ['「','」'],
+        ['〝','〞'], ['〟','〟'], ['【','】'], ['〖','〗'], ['〔','〕'], ['〘','〙'],
+        ['〚','〛'], ['〝','〞'], ['〞','〟'], ['«','»'], ['‹','›'], ['„','“'],
+        ['‚','‘'], ['‛','’'], ['“','”'], ['‘','’'], ['‚','‛'], ['„','‟'],
+        ['⸂','⸃'], ['⸄','⸅'], ['⸉','⸊'], ['⸌','⸍'], ['⸜','⸝'], ['⸠','⸡'],
+        ['〈','〉'], ['〈','〉'], ['❨','❩'], ['❪','❫'], ['❬','❭'], ['❮','❯'],
+        ['❰','❱'], ['❲','❳'], ['❴','❵'], ['⟅','⟆'], ['⟦','⟧'], ['⟨','⟩'],
+        ['⟪','⟫'], ['⟬','⟭'], ['⟮','⟯'], ['⦃','⦄'], ['⦅','⦆'], ['⦇','⦈'],
+        ['⦉','⦊'], ['⦋','⦌'], ['⦍','⦎'], ['⦏','⦐'], ['⦑','⦒'], ['⦓','⦔']
     ];
-
-    brackets.forEach(([name, left, right]) => {
-        styles.push([name, `${left}${input}${right}`]);
+    brackets.forEach(([left, right], i) => {
+        styles.push([`Bracket ${i+1}`, `${left}${input}${right}`]);
     });
 
-    // 7. Symbol Decorations - 35 styles
-    const decorations = [
-        ['★Star★', '★', '★'], ['☆White Star☆', '☆', '☆'], ['⚡Thunder⚡', '⚡'],
-        ['🔥Fire🔥', '🔥'], ['💀Skull💀', '💀', '💀'], ['👑Crown👑', '👑', '👑'],
-        ['✨Sparkle✨', '✨'], ['💎Diamond💎', '💎', '💎'], ['🎯Target🎯', '🎯'],
-        ['⚔Sword⚔', '⚔'], ['🛡Shield🛡', '🛡', '🛡'], ['⚜Fleur⚜', '⚜', '⚜'],
-        ['☠Poison☠', '☠', '☠'], ['♠Spade♠', '♠', '♠'], ['♣Club♣', '♣'],
-        ['♥Heart♥', '♥', '♥'], ['♦Diamond♦', '♦', '♦'], ['♛Queen♛', '♛'],
-        ['♜Rook♜', '♜', '♜'], ['⚙Gear⚙', '⚙', '⚙'], ['☢Radioactive☢', '☢'],
-        ['☣Biohazard☣', '☣'], ['⚠Warning⚠', '⚠', '⚠'], ['✓Check✓', '✓', '✓'],
-        ['✗Cross✗', '✗', '✗'], ['✘Heavy Cross✘', '✘'], ['✚Plus✚', '✚'],
-        ['✦Star✦', '✦', '✦'], ['✧White Star✧', '✧', '✧'], ['✩Outlined✩', '✩'],
-        ['✪Circled✪', '✪', '✪'], ['✫Star Burst✫', '✫'], ['✬Heavy✬', '✬'],
-        ['✭Outlined✭', '✭'], ['✮Star✮', '✮']
+     // 7. Symbol Decorations - 150 combos
+    const symbols = [
+        '★','☆','⚡','🔥','💀','👑','✨','💎','🎯','⚔','🛡','⚜','☠','♠','♣','♥','♦','♛','♜','⚙',
+        '☢','☣','⚠','✓','✗','✘','✚','✦','✧','✩','✪','✫','✬','✭','✮','✯','✰','✱','✲','✳',
+        '✴','✵','✶','✷','✸','✹','✺','✻','✼','✽','✾','✿','❀','❁','❂','❃','❄','❅','❆','❇',
+        '❈','❉','❊','❋','❌','❍','❎','❏','❐','❑','❒','❓','❔','❕','❗','❘','❙','❚','❛','❜',
+        '❝','❞','❟','❠','❡','❢','❣','❤','❥','❦','❧','❨','❩','❪','❫','❬','❭','❮','❯','❰',
+        '❱','❲','❳','❴','❵','❶','❷','❸','❹','❺','❻','❼','❽','❾','❿','➀','➁','➂','➃','➄',
+        '➅','➆','➇','➈','➉','➊','➋','➌','➍','➎','➏','➐','➑','➒','➓','➔','➕','➖','➗','➘',
+        '➙','➚','➛','➜','➝','➞','➟','➠','➡','➢','➣','➤','➥','➦','➧','➨','➩','➪','➫'
     ];
-
-    decorations.forEach(([name, left, right]) => {
-        styles.push([name, `${left}${input}${right}`]);
+    symbols.forEach((s, i) => {
+        styles.push([`Symbol ${i+1}`, `${s}${input}${s}`]);
+        styles.push([`Symbol L ${i+1}`, `${s}${input}`]);
+        styles.push([`Symbol R ${i+1}`, `${input}${s}`]);
     });
 
-    // 8. Free Fire Max Styles - 15 styles
-    const ffStyles = [
-        ['FF King', `꧁༒${input}༒꧂`],
-        ['FF Demon', `么༺${input}༻么`],
-        ['FF Cross', `×͜×★${input}★×͜×`],
-        ['FF Thunder', `乂⚡${input}⚡乂`],
-        ['FF Pro', `◥꧁${input}꧂◤`],
-        ['FF Elite', `ツ${input}ツ`],
-        ['FF Legend', `★彡${input}彡★`],
-        ['FF Boss', `Ø${input}Ø`],
-        ['FF Killer', `⎝☠${input}☠⎠`],
-        ['FF God', `♛${input}♛`],
-        ['FF Ultra', `꧁༺${input}༻꧂`],
-        ['FF Master', `么★彡${input}彡★么`],
-        ['FF Devil', `×͜×☠${input}☠×͜×`],
-        ['FF Hero', `◥★${input}★◤`],
-        ['FF VIP', `乂♛${input}♛乂`]
-    ];
+    // 8. Free Fire Max Styles - 50 combos
+    const ffPrefixes = ['꧁༒','么༺','×͜×★','乂⚡','◥꧁','ツ','★彡','Ø','⎝☠','♛','꧁༺','么★彡','×͜×☠','◥★','乂♛','꧁👑','么🐉','×͜×⚔','◥👻','乂☠'];
+    const ffSuffixes = ['༒꧂','༻么','★×͜×','⚡乂','꧂◤','ツ','彡★','Ø','☠⎠','♛','༻꧂','彡★么','☠×͜×','★◤','♛乂','👑꧂','🐉么','⚔×͜×','👻◤','☠乂'];
+    const ffExtra = ['꧁⚔','么👻','×͜×🔥','◥👑','乂🐉','꧁⚡','么💀','×͜×✨','◥💎','乂🎯','꧁⚜','么☠','×͜×♛','◥⚔','乂🔥','꧁💀','么👑','×͜×🐉','◥⚡','乂✨','꧁💎','么🎯','×͜×⚜','◥☠','乂♛','꧁🔥','么⚔','×͜×👻','◥💀','乂👑'];
+    const ffExtraEnd = ['⚔꧂','👻么','🔥×͜×','👑◤','🐉乂','⚡꧂','💀么','✨×͜×','💎◤','🎯乂','⚜꧂','☠么','♛×͜×','⚔◤','🔥乂','💀꧂','👑么','🐉×͜×','⚡◤','✨乂','💎꧂','🎯么','⚜×͜×','☠◤','♛乂','🔥꧂','⚔么','👻×͜×','💀◤','👑乂'];
 
-    ffStyles.forEach(([name, text]) => {
-        styles.push([name, text]);
+    ffPrefixes.forEach((p, i) => {
+        styles.push([`FF ${i+1}`, `${p}${input}${ffSuffixes[i]}`]);
+    });
+    ffExtra.forEach((p, i) => {
+        styles.push([`FF Elite ${i+1}`, `${p}${input}${ffExtraEnd[i]}`]);
     });
 
-    // 9. Glitch/Corrupted Styles - 10 styles
-    const glitch = [
-        ['Zalgo 1', input.split('').map(c => c + '̸').join('')],
-        ['Zalgo 2', input.split('').map(c => c + '̴̶̷').join('')],
-        ['Zalgo 3', input.split('').map(c => c + '̾̿̽').join('')],
-        ['Corrupted', input.split('').map(c => c + '͠͡').join('')],
-        ['Hacked', input.split('').map(c => c + '̸̡').join('')],
-        ['Glitch', input.split('').map(c => c + '҉').join('')],
-        ['Destroyed', input.split('').map(c => c + '̸̡̧̢').join('')],
-        ['Void', input.split('').map(c => c + '̸̴̶̷').join('')],
-        ['Chaos', input.split('').map(c => c + '͜͡').join('')],
-        ['Error', input.split('').map(c => c + '҉̸').join('')]
-    ];
-
-    glitch.forEach(([name, text]) => {
-        styles.push([name, text]);
+    // 9. Glitch/Corrupted Styles - 30 combos
+    const glitchMarks = ['̸','̴','̶','̷','̾','̿','̽','͠','͡','҉','̡','̧','̢','̾͛͠','̸̡̧̢','҉̸','̸̴̶̷','͜͡','̸̡','҉̸','̸̴','̶̷','͠͡','҉̸̡','̸̴̶','̷͡','͠҉','̸̡̧','̴̶̷͡','͠҉̸'];
+    glitchMarks.forEach((mark, i) => {
+        styles.push([`Glitch ${i+1}`, input.split('').map(c => c + mark).join('')]);
     });
 
-    // Render
-    outputs.innerHTML = styles.map(([name, text]) =>
-        `<div class="output-box" onclick="copyText('${text.replace(/'/g,"\\'")}')">
+    // 10. Wave & Special Combos - 50 combos
+    const waves = ['〰','≈','～','∼','〜','~','⋮','︴','﹏','﹋','﹌'];
+    const waveSyms = ['✨','★','🔥','💀','👑','⚡','💎','🎯','⚔','🛡'];
+    waves.forEach(w => {
+        styles.push([`Wave ${w}`, w + input + w]);
+        waveSyms.forEach(s => {
+            styles.push([`${s}Wave${w}`, s + w + input + w + s]);
+        });
+    });
+
+    // 11. Combo Styles - Tera screenshot jaisa
+    styles.push(['OXIE KING', `◥꧁${toUni(input, 119951, 119945)}꧂◤`]);
+    styles.push(['OXIE DEMON', `么༺${toUni(input, 120315, 120309)}༻么`]);
+    styles.push(['OXIE FIRE', `🔥${toUni(input, 120211, 120205)}🔥`]);
+    styles.push(['OXIE CROWN', `👑${toUni(input, 120068, 120062)}👑`]);
+
+    outputs.innerHTML = styles.map(([name, text, hot]) =>
+        `<div class="output-box ${hot? 'hot' : ''}" onclick="copyText('${text.replace(/'/g,"\\'")}')">
             <span class="style-label">${name}</span>
             ${text}
         </div>`
@@ -358,17 +496,57 @@ function generateText() {
     document.getElementById('count').textContent = `${styles.length} styles generated`;
 }
 
-function copyText(text) {
-    navigator.clipboard.writeText(text);
-    const toast = document.getElementById('toast');
-    toast.style.display = 'block';
-    setTimeout(() => toast.style.display = 'none', 1000);
+// TOOL 2: SYMBOL GENERATOR
+const symbolList = ['★','☆','⚡','🔥','💀','👑','✓','✗','◆','◇','▲','▼','●','○','■','□','ツ','シ','〆','々','꧁','꧂','×͜×','乂','么','乡','⎝','⎠','◥','◤','『','』','《','》','Ø','⊗','⊕','⊙','♛','♜','⚔','⚜','☠','♠','♣','♥','♦','✨','💎'];
+function genSymbol() {
+    const text = document.getElementById('symbolInput').value;
+    const out = document.getElementById('symbolOutput');
+    out.innerHTML = '';
+    if(!text) return;
+    symbolList.forEach(s => {
+        const fancy = `${s} ${text} ${s}`;
+        out.innerHTML += `<div class="output-box" onclick="copyText('${fancy}')">${fancy}</div>`;
+    });
+}
+
+// TOOL 3: UNIQUE CODE GENERATOR
+function genCode(length) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let code = 'OXIE-';
+    for(let i = 0; i < length; i++) {
+        if(length === 32 && [8,13,18,23].includes(i)) code += '-';
+        else code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    document.getElementById('codeOutput').innerHTML = `<div class="output-box" onclick="copyText('${code}')">${code}</div>`;
+}
+
+// TOOL 4: FF MAX NAME GENERATOR
+function genFF() {
+    const text = document.getElementById('ffInput').value;
+    const out = document.getElementById('ffOutput');
+    out.innerHTML = '';
+    if(!text) return;
+
+    const ffStyles = [
+        `꧁༒${text}༒꧂`, `么༺${text}༻么`, `×͜×★${text}★×͜×`, `乂⚡${text}⚡乂`,
+        `◥꧁${text}꧂◤`, `ツ${text}ツ`, `★彡${text}彡★`, `Ø${text}Ø`,
+        `⎝☠${text}☠⎠`, `♛${text}♛`, `꧁༺${text}༻꧂`, `么★彡${text}彡★么`,
+        `×͜×☠${text}☠×͜×`, `◥★${text}★◤`, `乂♛${text}♛乂`, `꧁👑${text}👑꧂`,
+        `么🐉${text}🐉么`, `×͜×⚔${text}⚔×͜×`, `◥👻${text}👻◤`, `乂☠${text}☠乂`,
+        `꧁⚔${text}⚔꧂`, `么👻${text}👻么`, `×͜×🔥${text}🔥×͜×`, `◥👑${text}👑◤`,
+        `乂🐉${text}🐉乂`, `꧁⚡${text}⚡꧂`, `么💀${text}💀么`, `×͜×✨${text}✨×͜×`,
+        `◥💎${text}💎◤`, `乂🎯${text}🎯乂`
+    ];
+
+    ffStyles.forEach(s => {
+        out.innerHTML += `<div class="output-box" onclick="copyText('${s}')">${s}</div>`;
+    });
 }
 
 // Auto-load
 window.onload = () => {
-    document.getElementById('inputBox').value = 'Oxiee';
-    generateText();
+    document.getElementById('inputBox').value = 'Oxie';
+    genFancy();
 };
 </script>
 </body>
