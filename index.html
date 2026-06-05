@@ -36,7 +36,7 @@
             text-shadow: 0 0 80px rgba(255, 215, 0, 0.1);
         }
 
-.header {
+        .header {
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(15px);
             padding: 15px 20px;
@@ -48,16 +48,16 @@
             position: relative;
             z-index: 10;
         }
-.logo {
+        .logo {
             font-weight: 900;
             font-size: 28px;
             background: linear-gradient(90deg, #a855f7, #3b82f6, #ec4899);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-.tabs {
+        .tabs {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 10px;
             margin-bottom: 25px;
             max-width: 900px;
@@ -65,7 +65,7 @@
             position: relative;
             z-index: 10;
         }
-.tab-btn {
+        .tab-btn {
             padding: 15px;
             background: rgba(26, 26, 46, 0.8);
             backdrop-filter: blur(5px);
@@ -77,18 +77,18 @@
             transition: 0.3s;
             font-size: 14px;
         }
-.tab-btn:hover {
+        .tab-btn:hover {
             border-color: #a855f7;
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(168, 85, 247, 0.4);
         }
-.tab-btn.active {
+        .tab-btn.active {
             background: linear-gradient(135deg, #a855f7, #3b82f6);
             color: #fff;
             border-color: transparent;
             box-shadow: 0 5px 25px rgba(168, 85, 247, 0.6);
         }
-.tool {
+        .tool {
             display: none;
             max-width: 900px;
             margin: 0 auto;
@@ -96,12 +96,12 @@
             position: relative;
             z-index: 10;
         }
-.tool.active { display: block; }
+        .tool.active { display: block; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-.title {
+        .title {
             text-align: center;
             font-size: 2.5rem;
             background: linear-gradient(90deg, #a855f7, #3b82f6, #ec4899);
@@ -126,14 +126,14 @@
             border-color: #a855f7;
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
         }
-.count {
+        .count {
             text-align: center;
             color: #a855f7;
             margin-bottom: 15px;
             font-weight: bold;
             font-size: 16px;
         }
-.output-box {
+        .output-box {
             background: rgba(26, 26, 46, 0.8);
             backdrop-filter: blur(5px);
             border: 2px solid rgba(168, 85, 247, 0.2);
@@ -146,13 +146,13 @@
             word-break: break-all;
             position: relative;
         }
-.output-box:hover {
+        .output-box:hover {
             background: rgba(37, 37, 62, 0.9);
             border-color: #a855f7;
             transform: translateX(5px);
             box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3);
         }
-.style-label {
+        .style-label {
             position: absolute;
             top: 5px;
             right: 10px;
@@ -163,13 +163,13 @@
             padding: 2px 6px;
             border-radius: 3px;
         }
-.hot {
+        .hot {
             border-color: #ec4899!important;
             background: rgba(236, 72, 153, 0.1);
             box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
         }
-.hot.style-label { color: #ec4899; background: #000; }
-.btn {
+        .hot.style-label { color: #ec4899; background: #000; }
+        .btn {
             background: linear-gradient(135deg, #a855f7, #3b82f6);
             color: #fff;
             border: none;
@@ -181,11 +181,11 @@
             transition: 0.3s;
             font-size: 14px;
         }
-.btn:hover {
+        .btn:hover {
             transform: scale(1.05);
             box-shadow: 0 5px 20px rgba(168, 85, 247, 0.5);
         }
-.copied {
+        .copied {
             position: fixed;
             top: 20px;
             right: 20px;
@@ -198,7 +198,7 @@
             font-weight: bold;
             box-shadow: 0 5px 20px rgba(168, 85, 247, 0.6);
         }
-.footer {
+        .footer {
             position: fixed;
             bottom: 0;
             left: 0;
@@ -211,7 +211,7 @@
             border-top: 2px solid rgba(168, 85, 247, 0.5);
             z-index: 100;
         }
-.footer a {
+        .footer a {
             background: linear-gradient(90deg, #a855f7, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -219,10 +219,10 @@
             font-weight: bold;
             font-size: 18px;
         }
-.footer a:hover {
+        .footer a:hover {
             text-decoration: underline;
         }
-.space-box {
+        .space-box {
             background: rgba(26, 26, 46, 0.8);
             backdrop-filter: blur(5px);
             border: 2px dashed #a855f7;
@@ -231,7 +231,7 @@
             text-align: center;
             margin: 20px 0;
         }
-.space-char {
+        .space-char {
             font-size: 40px;
             color: #a855f7;
             letter-spacing: 10px;
@@ -249,6 +249,7 @@
         <button class="tab-btn" onclick="showTab(1)">2. Symbol Gen</button>
         <button class="tab-btn" onclick="showTab(2)">3. Unique Code</button>
         <button class="tab-btn" onclick="showTab(3)">4. FF Max Name</button>
+        <button class="tab-btn" onclick="showTab(4)">5. FF Pro Toolkit</button>
     </div>
 
     <!-- TOOL 1: FANCY TEXT 500+ -->
@@ -285,67 +286,165 @@
         <div id="codeOutput"></div>
     </div>
 
-    <!-- TOOL 4: FF MAX NAME GENERATOR -->
+    <!-- TOOL 4: FF MAX NAME GENERATOR - PURANA WALA -->
     <div class="tool" id="tool3">
         <h2 class="title">Free Fire Max Name</h2>
         <input type="text" class="tool-input" id="ffInput" placeholder="Type: Oxie" oninput="genFF()">
         <div id="ffOutput"></div>
     </div>
 
+    <!-- TOOL 5: FF PRO TOOLKIT - NAYA WALA -->
+    <div class="tool" id="tool4">
+        <h2 class="title">FF Pro Toolkit - Names + Guild + Bio</h2>
+        
+        <!-- SUB TABS -->
+        <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;">
+            <button onclick="showFFProTab('name')" id="ffpro-tab-name" style="background:#ff1e6b;color:#fff;border:none;padding:10px 15px;border-radius:6px;cursor:pointer;font-weight:bold;">👑 Stylish Names</button>
+            <button onclick="showFFProTab('guild')" id="ffpro-tab-guild" style="background:#1a1a1a;color:#fff;border:1px solid #333;padding:10px 15px;border-radius:6px;cursor:pointer;font-weight:bold;">🛡️ Guild Names</button>
+            <button onclick="showFFProTab('bio')" id="ffpro-tab-bio" style="background:#1a1a1a;color:#fff;border:1px solid #333;padding:10px 15px;border-radius:6px;cursor:pointer;font-weight:bold;">📝 Stylish Bio</button>
+        </div>
+
+        <!-- NAME TAB -->
+        <div id="ffpro-name-tab">
+            <input type="text" class="tool-input" id="ffProInput" placeholder="Type: Oxie" oninput="genFFPro()">
+            <div class="count" id="ffProCount">0 styles generated</div>
+            <div id="ffProOutput"></div>
+        </div>
+
+        <!-- GUILD TAB -->
+        <div id="ffpro-guild-tab" style="display:none;">
+            <input type="text" class="tool-input" id="ffProGuildInput" placeholder="Guild: OXIE" oninput="genFFProGuild()">
+            <div class="count" id="ffProGuildCount">0 guild styles</div>
+            <div id="ffProGuildOutput"></div>
+        </div>
+
+        <!-- BIO TAB -->
+        <div id="ffpro-bio-tab" style="display:none;">
+            <input type="text" class="tool-input" id="ffProBioName" placeholder="Naam: Oxie" oninput="genFFProBio()">
+            <input type="text" class="tool-input" id="ffProBioAge" placeholder="Age: 18" oninput="genFFProBio()">
+            <input type="text" class="tool-input" id="ffProBioRank" placeholder="Rank: Grandmaster" oninput="genFFProBio()">
+            <select class="tool-input" id="ffProBioMood" onchange="genFFProBio()">
+                <option value="attitude">Attitude</option>
+                <option value="love">Love</option>
+                <option value="sad">Sad</option>
+                <option value="gamer">Gamer</option>
+                <option value="toxic">Toxic</option>
+            </select>
+            <div class="count" id="ffProBioCount">0 bio styles</div>
+            <div id="ffProBioOutput"></div>
+        </div>
+    </div>
+
     <div class="footer">
-        📷 Made by <a href="https://instagram.com/oxie_45" target="_blank">@oxie_45</a> | 500+ Styles | 4 Tools
+        📷 Made by <a href="https://instagram.com/oxie_45" target="_blank">@oxie_45</a> | 500+ Styles | 5 Tools
     </div>
 
     <div class="copied" id="toast">Copied! ✓</div>
-
-<script>
-// UTILS
-function showTab(i) {
-    document.querySelectorAll('.tool').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tool' + i).classList.add('active');
-    document.querySelectorAll('.tab-btn')[i].classList.add('active');
-}
-
-function copyText(text) {
-    navigator.clipboard.writeText(text);
-    const toast = document.getElementById('toast');
-    toast.style.display = 'block';
-    setTimeout(() => toast.style.display = 'none', 1000);
-}
-
-// CHARACTER MAPS - 30+ FONTS
-const charMaps = {
-    'Small Caps': {'a':'ᴀ','b':'ʙ','c':'ᴄ','d':'ᴅ','e':'ᴇ','f':'ғ','g':'ɢ','h':'ʜ','i':'ɪ','j':'ᴊ','k':'ᴋ','l':'ʟ','m':'ᴍ','n':'ɴ','o':'ᴏ','p':'ᴘ','q':'ǫ','r':'ʀ','s':'s','t':'ᴛ','u':'ᴜ','v':'ᴠ','w':'ᴡ','x':'x','y':'ʏ','z':'ᴢ','A':'ᴀ','B':'ʙ','C':'ᴄ','D':'ᴅ','E':'ᴇ','F':'ғ','G':'ɢ','H':'ʜ','I':'ɪ','J':'ᴊ','K':'ᴋ','L':'ʟ','M':'ᴍ','N':'ɴ','O':'ᴏ','P':'ᴘ','Q':'ǫ','R':'ʀ','S':'s','T':'ᴛ','U':'ᴜ','V':'ᴠ','W':'ᴡ','X':'x','Y':'ʏ','Z':'ᴢ'},
-    'Upside Down': {'a':'ɐ','b':'q','c':'ɔ','d':'p','e':'ǝ','f':'ɟ','g':'ƃ','h':'ɥ','i':'ᴉ','j':'ɾ','k':'ʞ','l':'l','m':'ɯ','n':'u','o':'o','p':'d','q':'b','r':'ɹ','s':'s','t':'ʇ','u':'n','v':'ʌ','w':'ʍ','x':'x','y':'ʎ','z':'z','A':'∀','B':'𐐒','C':'Ɔ','D':'ᗡ','E':'Ǝ','F':'Ⅎ','G':'⅁','H':'H','I':'I','J':'ſ','K':'ʞ','L':'˥','M':'W','N':'N','O':'O','P':'Ԁ','Q':'Ό','R':'ᴿ','S':'S','T':'┴','U':'∩','V':'Λ','W':'M','X':'X','Y':'⅄','Z':'Z'},
-    'Bubble': {'a':'ⓐ','b':'ⓑ','c':'ⓒ','d':'ⓓ','e':'ⓔ','f':'ⓕ','g':'ⓖ','h':'ⓗ','i':'ⓘ','j':'ⓙ','k':'ⓚ','l':'ⓛ','m':'ⓜ','n':'ⓝ','o':'ⓞ','p':'ⓟ','q':'ⓠ','r':'ⓡ','s':'ⓢ','t':'ⓣ','u':'ⓤ','v':'ⓥ','w':'ⓦ','x':'ⓧ','y':'ⓨ','z':'ⓩ','A':'Ⓐ','B':'Ⓑ','C':'Ⓒ','D':'Ⓓ','E':'Ⓔ','F':'Ⓕ','G':'Ⓖ','H':'Ⓗ','I':'Ⓘ','J':'Ⓙ','K':'Ⓚ','L':'Ⓛ','M':'Ⓜ','N':'Ⓝ','O':'Ⓞ','P':'Ⓟ','Q':'Ⓠ','R':'Ⓡ','S':'Ⓢ','T':'Ⓣ','U':'Ⓤ','V':'Ⓥ','W':'Ⓦ','X':'Ⓧ','Y':'Ⓨ','Z':'Ⓩ'},
-    'Squared': {'a':'🄰','b':'🄱','c':'🄲','d':'🄳','e':'🄴','f':'🄵','g':'🄶','h':'🄷','i':'🄸','j':'🄹','k':'🄺','l':'🄻','m':'🄼','n':'🄽','o':'🄾','p':'🄿','q':'🅀','r':'🅁','s':'🅂','t':'🅃','u':'🅄','v':'🅅','w':'🅆','x':'🅇','y':'🅈','z':'🅉','A':'🄰','B':'🄱','C':'🄲','D':'🄳','E':'🄴','F':'🄵','G':'🄶','H':'🄷','I':'🄸','J':'🄹','K':'🄺','L':'🄻','M':'🄼','N':'🄽','O':'🄾','P':'🄿','Q':'🅀','R':'🅁','S':'🅂','T':'🅃','U':'🅄','V':'🅅','W':'🅆','X':'🅇','Y':'🅈','Z':'🅉'},
-    'Cursive': {'a':'𝒶','b':'𝒷','c':'𝒸','d':'𝒹','e':'𝑒','f':'𝒻','g':'𝑔','h':'𝒽','i':'𝒾','j':'𝒿','k':'𝓀','l':'𝓁','m':'𝓂','n':'𝓃','o':'𝑜','p':'𝓅','q':'𝓆','r':'𝓇','s':'𝓈','t':'𝓉','u':'𝓊','v':'𝓋','w':'𝓌','x':'𝓍','y':'𝓎','z':'𝓏','A':'𝒜','B':'ℬ','C':'𝒞','D':'𝒟','E':'ℰ','F':'ℱ','G':'𝒢','H':'ℋ','I':'ℐ','J':'𝒥','K':'𝒦','L':'ℒ','M':'ℳ','N':'𝒩','O':'𝒪','P':'𝒫','Q':'𝒬','R':'ℛ','S':'𝒮','T':'𝒯','U':'𝒰','V':'𝒱','W':'𝒲','X':'𝒳','Y':'𝒴','Z':'𝒵'},
-    'Cyrillic': {'a':'а','b':'в','c':'с','d':'ԁ','e':'е','f':'ғ','g':'ɢ','h':'н','i':'і','j':'ј','k':'к','l':'ӏ','m':'м','n':'п','o':'о','p':'р','q':'զ','r':'г','s':'ѕ','t':'т','u':'ս','v':'ѵ','w':'ԝ','x':'х','y':'у','z':'ᴢ','A':'А','B':'В','C':'С','D':'ԁ','E':'Е','F':'Ғ','G':'ԍ','H':'Н','I':'І','J':'Ј','K':'К','L':'ӏ','M':'М','N':'П','O':'О','P':'Р','Q':'զ','R':'Г','S':'Ѕ','T':'Т','U':'Ս','V':'Ѵ','W':'Ԝ','X':'Х','Y':'У','Z':'ᴢ'},
-    'Fullwidth': {'a':'ａ','b':'ｂ','c':'ｃ','d':'ｄ','e':'ｅ','f':'ｆ','g':'ｇ','h':'ｈ','i':'ｉ','j':'ｊ','k':'ｋ','l':'ｌ','m':'ｍ','n':'ｎ','o':'ｏ','p':'ｐ','q':'ｑ','r':'ｒ','s':'ｓ','t':'ｔ','u':'ｕ','v':'ｖ','w':'ｗ','x':'ｘ','y':'ｙ','z':'ｚ','A':'Ａ','B':'Ｂ','C':'Ｃ','D':'Ｄ','E':'Ｅ','F':'Ｆ','G':'Ｇ','H':'Ｈ','I':'Ｉ','J':'Ｊ','K':'Ｋ','L':'Ｌ','M':'Ｍ','N':'Ｎ','O':'Ｏ','P':'Ｐ','Q':'Ｑ','R':'Ｒ','S':'Ｓ','T':'Ｔ','U':'Ｕ','V':'Ｖ','W':'Ｗ','X':'Ｘ','Y':'Ｙ','Z':'Ｚ'},
-    'Medieval': {'a':'𝔞','b':'𝔟','c':'𝔠','d':'𝔡','e':'𝔢','f':'𝔣','g':'𝔤','h':'𝔥','i':'𝔦','j':'𝔧','k':'𝔨','l':'𝔩','m':'𝔪','n':'𝔫','o':'𝔬','p':'𝔭','q':'𝔮','r':'𝔯','s':'𝔰','t':'𝔱','u':'𝔲','v':'𝔳','w':'𝔴','x':'𝔵','y':'𝔶','z':'𝔷','A':'𝔄','B':'𝔅','C':'ℭ','D':'𝔇','E':'𝔈','F':'𝔉','G':'𝔊','H':'ℌ','I':'ℑ','J':'𝔍','K':'𝔎','L':'𝔏','M':'𝔐','N':'𝔑','O':'𝔒','P':'𝔓','Q':'𝔔','R':'ℜ','S':'𝔖','T':'𝔗','U':'𝔘','V':'𝔙','W':'𝔚','X':'𝔛','Y':'𝔜','Z':'ℨ'},
-    'Greek': {'a':'α','b':'в','c':'¢','d':'∂','e':'є','f':'ƒ','g':'g','h':'н','i':'ι','j':'נ','k':'к','l':'ℓ','m':'м','n':'η','o':'σ','p':'ρ','q':'q','r':'я','s':'ѕ','t':'т','u':'υ','v':'ν','w':'ω','x':'χ','y':'у','z':'z','A':'Α','B':'Β','C':'C','D':'D','E':'E','F':'F','G':'G','H':'H','I':'I','J':'J','K':'K','L':'L','M':'M','N':'N','O':'O','P':'P','Q':'Q','R':'R','S':'S','T':'T','U':'U','V':'V','W':'W','X':'X','Y':'Y','Z':'Z'},
-    'Typewriter': {'a':'𝚊','b':'𝚋','c':'𝚌','d':'𝚍','e':'𝚎','f':'𝚏','g':'𝚐','h':'𝚑','i':'𝚒','j':'𝚓','k':'𝚔','l':'𝚕','m':'𝚖','n':'𝚗','o':'𝚘','p':'𝚙','q':'𝚚','r':'𝚛','s':'𝚜','t':'𝚝','u':'𝚞','v':'𝚟','w':'𝚠','x':'𝚡','y':'𝚢','z':'𝚣','A':'𝙰','B':'𝙱','C':'𝙲','D':'𝙳','E':'𝙴','F':'𝙵','G':'𝙶','H':'𝙷','I':'𝙸','J':'𝙹','K':'𝙺','L':'𝙻','M':'𝙼','N':'𝙽','O':'𝙾','P':'𝙿','Q':'𝚀','R':'𝚁','S':'𝚂','T':'𝚃','U':'𝚄','V':'𝚅','W':'𝚆','X':'𝚇','Y':'𝚈','Z':'𝚉'}
-};
-
-function applyMap(text, map) {
-    return text.split('').map(c => map[c] || c).join('');
-}
-
-function toUni(text, offset1, offset2) {
-    return text.split('').map(c => {
-        const code = c.charCodeAt(0);
-        if(code >= 65 && code <= 90) return String.fromCodePoint(code + offset1);
-        if(code >= 97 && code <= 122) return String.fromCodePoint(code + offset2);
-        return c;
-    }).join('');
-}
-
-function addDiacritic(text, diacritic) {
-    return text.split('').join(diacritic) + diacritic;
-}
-
-// TOOL 1: FANCY TEXT 500+
+    <script>
+        // UTILS
+        function showTab(i) {
+            document.querySelectorAll('.tool').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tool' + i).classList.add('active');
+            document.querySelectorAll('.tab-btn')[i].classList.add('active');
+        }
+        
+        function copyText(text) {
+            navigator.clipboard.writeText(text);
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(() => toast.style.display = 'none', 1000);
+        }
+        
+        // ===== FF PRO CONFIG =====
+        const smallCapsMap = {'a':'ᴀ','b':'ʙ','c':'ᴄ','d':'ᴅ','e':'ᴇ','f':'ғ','g':'ɢ','h':'ʜ','i':'ɪ','j':'ᴊ','k':'ᴋ','l':'ʟ','m':'ᴍ','n':'ɴ','o':'ᴏ','p':'ᴘ','q':'ǫ','r':'ʀ','s':'s','t':'ᴛ','u':'ᴜ','v':'ᴠ','w':'ᴡ','x':'x','y':'ʏ','z':'ᴢ'};
+        
+        const ffNameStyles = [
+            { name: "QN Style", template: "Ҩ፝֟፝ɴ ┇ NAMEㅤᥫ᭡" },
+            { name: "QN + Dot", template: "Ҩ፝֟፝ɴ ┇ NAME_DOTㅤᥫ᭡" },
+            { name: "King Middle", template: "꧁NAME_MID☬༒꧂" },
+            { name: "King Pro", template: "꧁☬NAME_MID☬༒꧂" },
+            { name: "VIP Boss", template: "༄ᶦᶰᵈ᭄ NAME..♛.࿐ᴮᵒˢˢ♡" },
+            { name: "Devil", template: "😈꧁༺NAME༻꧂😈" },
+            { name: "Crown", template: "👑⚡NAME⚡👑" },
+            { name: "Fire", template: "🔥꧁༒☬NAME☬༒꧂🔥" },
+            { name: "Sniper", template: "🎯 ᴴᵉᵃᵈˢʰᵒᵗ NAME 🎯" },
+            { name: "Skull King", template: "💀 NAME 💀" },
+            { name: "Dragon", template: "🐉 NAME 🐉" },
+            { name: "Psycho", template: "☢ NAME ☢" },
+            { name: "Broken Heart", template: "💔 NAME 💔" },
+            { name: "Wolf", template: "🐺 NAME 🐺" },
+            { name: "Lion", template: "🦁 NAME 🦁" },
+            { name: "Diamond", template: "💎 NAME 💎" },
+            { name: "99% Headshot", template: "NAME_UPPER亗 99%" },
+            { name: "Toxic", template: "×͜×ㅤNAMEㅤ×͜×" },
+            { name: "Love", template: "ᥫ᭡ ♡ NAME ♡ ᥫ᭡" },
+            { name: "Dot Pro", template: "NAME_DOT" },
+            { name: "Wave King", template: "〰️ NAME 〰️" },
+            { name: "Star Boss", template: "★彡 NAME 彡★" },
+            { name: "Thunder", template: "⚡ NAME ⚡" },
+            { name: "Royal", template: "♛ NAME ♛" },
+            { name: "Ghost", template: "👻 NAME 👻" }
+        ];
+        
+        const ffGuildStyles = [
+            { name: "Guild King", template: "꧁༒☬GUILD☬༒꧂" },
+            { name: "Guild Fire", template: "🔥『GUILD』🔥" },
+            { name: "Guild Devil", template: "😈︻デGUILD︻デ😈" },
+            { name: "Guild Wolf", template: "🐺 GUILD 🐺" },
+            { name: "Guild Dragon", template: "🐉〖GUILD〗🐉" },
+            { name: "Guild Skull", template: "💀«GUILD»💀" },
+            { name: "Guild Crown", template: "👑︽GUILD︽👑" },
+            { name: "Guild Toxic", template: "☢️GUILD☢️" },
+            { name: "Guild Squad", template: "乂GUILD乂" },
+            { name: "Guild OP", template: "⚡GUILD⚡" },
+            { name: "Guild Clan", template: "〆GUILD〆" },
+            { name: "Guild Pro", template: "『GUILD』ᴳᵒᵈ" },
+            { name: "Guild Elite", template: "★彡GUILD彡★" },
+            { name: "Guild Dark", template: "☠️GUILD☠️" },
+            { name: "Guild Legend", template: "👑GUILD👑" }
+        ];
+        
+        const ffBioTemplates = {
+            attitude: ["꧁༒☬NAME☬༒꧂\n👑 AGE Years Old\n⚡ RANK Player\n💀 Hate Me Or Love Me\n🔥 But Never Ignore Me","😎NAME😎\nAGE | RANK\n💯 Don't Copy My Style\n⚡ I'm Limited Edition"],
+            love: ["ᥫ᭡ ♡ NAME ♡ ᥫ᭡\n💕 AGE Years | Single\n🌹 Dil Se Gamer\n💔 Broken But Dangerous","💘NAME💘\nAGE | 💝 Love Status: Single\n🎮 FF Lover\n💌 DM For Collab"],
+            sad: ["💔 NAME 💔\n😢 AGE | Alone\n🥀 RANK But Sad\n🖤 Life Is Pain","☠️NAME☠️\n😭 AGE Years\n💀 Dead Inside\n⚰️ RIP Emotions"],
+            gamer: ["🎮 NAME 🎮\n🏆 AGE | RANK\n🔫 Headshot Machine\n💯 99% Win Rate","👑NAME👑\n⚡ AGE | RANK\n🎯 Pro Player\n🔥 Squad Leader"],
+            toxic: ["☢️ NAME ☢️\n💀 AGE | Toxic\n🤬 Gaali Expert\n⚠️ Stay Away","👿NAME👿\nAGE | ☠️ Toxic\n🔪 No Mercy\n💣 Danger Zone"]
+        };
+        
+        // CHARACTER MAPS - 30+ FONTS
+        const charMaps = {
+            'Small Caps': {'a':'ᴀ','b':'ʙ','c':'ᴄ','d':'ᴅ','e':'ᴇ','f':'ғ','g':'ɢ','h':'ʜ','i':'ɪ','j':'ᴊ','k':'ᴋ','l':'ʟ','m':'ᴍ','n':'ɴ','o':'ᴏ','p':'ᴘ','q':'ǫ','r':'ʀ','s':'s','t':'ᴛ','u':'ᴜ','v':'ᴠ','w':'ᴡ','x':'x','y':'ʏ','z':'ᴢ','A':'ᴀ','B':'ʙ','C':'ᴄ','D':'ᴅ','E':'ᴇ','F':'ғ','G':'ɢ','H':'ʜ','I':'ɪ','J':'ᴊ','K':'ᴋ','L':'ʟ','M':'ᴍ','N':'ɴ','O':'ᴏ','P':'ᴘ','Q':'ǫ','R':'ʀ','S':'s','T':'ᴛ','U':'ᴜ','V':'ᴠ','W':'ᴡ','X':'x','Y':'ʏ','Z':'ᴢ'},
+            'Upside Down': {'a':'ɐ','b':'q','c':'ɔ','d':'p','e':'ǝ','f':'ɟ','g':'ƃ','h':'ɥ','i':'ᴉ','j':'ɾ','k':'ʞ','l':'l','m':'ɯ','n':'u','o':'o','p':'d','q':'b','r':'ɹ','s':'s','t':'ʇ','u':'n','v':'ʌ','w':'ʍ','x':'x','y':'ʎ','z':'z','A':'∀','B':'𐐒','C':'Ɔ','D':'ᗡ','E':'Ǝ','F':'Ⅎ','G':'⅁','H':'H','I':'I','J':'ſ','K':'ʞ','L':'˥','M':'W','N':'N','O':'O','P':'Ԁ','Q':'Ό','R':'ᴿ','S':'S','T':'┴','U':'∩','V':'Λ','W':'M','X':'X','Y':'⅄','Z':'Z'},
+            'Bubble': {'a':'ⓐ','b':'ⓑ','c':'ⓒ','d':'ⓓ','e':'ⓔ','f':'ⓕ','g':'ⓖ','h':'ⓗ','i':'ⓘ','j':'ⓙ','k':'ⓚ','l':'ⓛ','m':'ⓜ','n':'ⓝ','o':'ⓞ','p':'ⓟ','q':'ⓠ','r':'ⓡ','s':'ⓢ','t':'ⓣ','u':'ⓤ','v':'ⓥ','w':'ⓦ','x':'ⓧ','y':'ⓨ','z':'ⓩ','A':'Ⓐ','B':'Ⓑ','C':'Ⓒ','D':'Ⓓ','E':'Ⓔ','F':'Ⓕ','G':'Ⓖ','H':'Ⓗ','I':'Ⓘ','J':'Ⓙ','K':'Ⓚ','L':'Ⓛ','M':'Ⓜ','N':'Ⓝ','O':'Ⓞ','P':'Ⓟ','Q':'Ⓠ','R':'Ⓡ','S':'Ⓢ','T':'Ⓣ','U':'Ⓤ','V':'Ⓥ','W':'Ⓦ','X':'Ⓧ','Y':'Ⓨ','Z':'Ⓩ'},
+            'Squared': {'a':'🄰','b':'🄱','c':'🄲','d':'🄳','e':'🄴','f':'🄵','g':'🄶','h':'🄷','i':'🄸','j':'🄹','k':'🄺','l':'🄻','m':'🄼','n':'🄽','o':'🄾','p':'🄿','q':'🅀','r':'🅁','s':'🅂','t':'🅃','u':'🅄','v':'🅅','w':'🅆','x':'🅇','y':'🅈','z':'🅉','A':'🄰','B':'🄱','C':'🄲','D':'🄳','E':'🄴','F':'🄵','G':'🄶','H':'🄷','I':'🄸','J':'🄹','K':'🄺','L':'🄻','M':'🄼','N':'🄽','O':'🄾','P':'🄿','Q':'🅀','R':'🅁','S':'🅂','T':'🅃','U':'🅄','V':'🅅','W':'🅆','X':'🅇','Y':'🅈','Z':'🅉'},
+            'Cursive': {'a':'𝒶','b':'𝒷','c':'𝒸','d':'𝒹','e':'𝑒','f':'𝒻','g':'𝑔','h':'𝒽','i':'𝒾','j':'𝒿','k':'𝓀','l':'𝓁','m':'𝓂','n':'𝓃','o':'𝑜','p':'𝓅','q':'𝓆','r':'𝓇','s':'𝓈','t':'𝓉','u':'𝓊','v':'𝓋','w':'𝓌','x':'𝓍','y':'𝓎','z':'𝓏','A':'𝒜','B':'ℬ','C':'𝒞','D':'𝒟','E':'ℰ','F':'ℱ','G':'𝒢','H':'ℋ','I':'ℐ','J':'𝒥','K':'𝒦','L':'ℒ','M':'ℳ','N':'𝒩','O':'𝒪','P':'𝒫','Q':'𝒬','R':'ℛ','S':'𝒮','T':'𝒯','U':'𝒰','V':'𝒱','W':'𝒲','X':'𝒳','Y':'𝒴','Z':'𝒵'},
+            'Cyrillic': {'a':'а','b':'в','c':'с','d':'ԁ','e':'е','f':'ғ','g':'ɢ','h':'н','i':'і','j':'ј','k':'к','l':'ӏ','m':'м','n':'п','o':'о','p':'р','q':'զ','r':'г','s':'ѕ','t':'т','u':'ս','v':'ѵ','w':'ԝ','x':'х','y':'у','z':'ᴢ','A':'А','B':'В','C':'С','D':'ԁ','E':'Е','F':'Ғ','G':'ԍ','H':'Н','I':'І','J':'Ј','K':'К','L':'ӏ','M':'М','N':'П','O':'О','P':'Р','Q':'զ','R':'Г','S':'Ѕ','T':'Т','U':'Ս','V':'Ѵ','W':'Ԝ','X':'Х','Y':'У','Z':'ᴢ'},
+            'Fullwidth': {'a':'ａ','b':'ｂ','c':'ｃ','d':'ｄ','e':'ｅ','f':'ｆ','g':'ｇ','h':'ｈ','i':'ｉ','j':'ｊ','k':'ｋ','l':'ｌ','m':'ｍ','n':'ｎ','o':'ｏ','p':'ｐ','q':'ｑ','r':'ｒ','s':'ｓ','t':'ｔ','u':'ｕ','v':'ｖ','w':'ｗ','x':'ｘ','y':'ｙ','z':'ｚ','A':'Ａ','B':'Ｂ','C':'Ｃ','D':'Ｄ','E':'Ｅ','F':'Ｆ','G':'Ｇ','H':'Ｈ','I':'Ｉ','J':'Ｊ','K':'Ｋ','L':'Ｌ','M':'Ｍ','N':'Ｎ','O':'Ｏ','P':'Ｐ','Q':'Ｑ','R':'Ｒ','S':'Ｓ','T':'Ｔ','U':'Ｕ','V':'Ｖ','W':'Ｗ','X':'Ｘ','Y':'Ｙ','Z':'Ｚ'},
+            'Medieval': {'a':'𝔞','b':'𝔟','c':'𝔠','d':'𝔡','e':'𝔢','f':'𝔣','g':'𝔤','h':'𝔥','i':'𝔦','j':'𝔧','k':'𝔨','l':'𝔩','m':'𝔪','n':'𝔫','o':'𝔬','p':'𝔭','q':'𝔮','r':'𝔯','s':'𝔰','t':'𝔱','u':'𝔲','v':'𝔳','w':'𝔴','x':'𝔵','y':'𝔶','z':'𝔷','A':'𝔄','B':'𝔅','C':'ℭ','D':'𝔇','E':'𝔈','F':'𝔉','G':'𝔊','H':'ℌ','I':'ℑ','J':'𝔍','K':'𝔎','L':'𝔏','M':'𝔐','N':'𝔑','O':'𝔒','P':'𝔓','Q':'𝔔','R':'ℜ','S':'𝔖','T':'𝔗','U':'𝔘','V':'𝔙','W':'𝔚','X':'𝔛','Y':'𝔜','Z':'ℨ'},
+            'Greek': {'a':'α','b':'в','c':'¢','d':'∂','e':'є','f':'ƒ','g':'g','h':'н','i':'ι','j':'נ','k':'к','l':'ℓ','m':'м','n':'η','o':'σ','p':'ρ','q':'q','r':'я','s':'ѕ','t':'т','u':'υ','v':'ν','w':'ω','x':'χ','y':'у','z':'z','A':'Α','B':'Β','C':'C','D':'D','E':'E','F':'F','G':'G','H':'H','I':'I','J':'J','K':'K','L':'L','M':'M','N':'N','O':'O','P':'P','Q':'Q','R':'R','S':'S','T':'T','U':'U','V':'V','W':'W','X':'X','Y':'Y','Z':'Z'},
+            'Typewriter': {'a':'𝚊','b':'𝚋','c':'𝚌','d':'𝚍','e':'𝚎','f':'𝚏','g':'𝚐','h':'𝚑','i':'𝚒','j':'𝚓','k':'𝚔','l':'𝚕','m':'𝚖','n':'𝚗','o':'𝚘','p':'𝚙','q':'𝚚','r':'𝚛','s':'𝚜','t':'𝚝','u':'𝚞','v':'𝚟','w':'𝚠','x':'𝚡','y':'𝚢','z':'𝚣','A':'𝙰','B':'𝙱','C':'𝙲','D':'𝙳','E':'𝙴','F':'𝙵','G':'𝙶','H':'𝙷','I':'𝙸','J':'𝙹','K':'𝙺','L':'𝙻','M':'𝙼','N':'𝙽','O':'𝙾','P':'𝙿','Q':'𝚀','R':'𝚁','S':'𝚂','T':'𝚃','U':'𝚄','V':'𝚅','W':'𝚆','X':'𝚇','Y':'𝚈','Z':'𝚉'}
+        };
+        
+        function applyMap(text, map) {
+            return text.split('').map(c => map[c] || c).join('');
+        }
+        
+        function toUni(text, offset1, offset2) {
+            return text.split('').map(c => {
+                const code = c.charCodeAt(0);
+                if(code >= 65 && code <= 90) return String.fromCodePoint(code + offset1);
+                if(code >= 97 && code <= 122) return String.fromCodePoint(code + offset2);
+                return c;
+            }).join('');
+        }
+        
+        function addDiacritic(text, diacritic) {
+            return text.split('').join(diacritic) + diacritic;
+        }
+        <script>
+// ===== TOOL 1: FANCY TEXT 500+ =====
 function genFancy() {
     const input = document.getElementById('inputBox').value;
     const outputs = document.getElementById('outputs');
@@ -359,9 +458,8 @@ function genFancy() {
 
     // HOT: OXIE SIGNATURE STYLE - HAR LETTER ALAG
     const cursiveMap = charMaps['Cursive'];
-    const scriptMap = charMaps['Cursive'];
     const firstTwo = applyMap(input.slice(0,2), cursiveMap);
-    const rest = toUni(input, 119951, 119945);
+    const rest = toUni(input.slice(2), 119951, 119945);
     const oxieStyle = `${firstTwo} ⋮ ${rest}〰`;
     styles.push(['HOT: OXIE Style', oxieStyle, true]);
 
@@ -413,11 +511,11 @@ function genFancy() {
 
     // 6. Bracket Styles - 100 combos
     const brackets = [
-        ['꧁','꧂'], ['『','』'], ['《','》'], ['',''], ['',''], ['〔','〕'],
+        ['꧁','꧂'], ['『','』'], ['《','》'], ['【','】'], ['〖','〗'], ['〔','〕'],
         ['〖','〗'], ['⦅','⦆'], ['⦇','⦈'], ['⟦','⟧'], ['⟨','⟩'], ['⟪','⟫'],
         ['❮','❯'], ['❰','❱'], ['❲','❳'], ['❴','❵'], ['⌈','⌉'], ['⌊','⌋'],
         ['⎛','⎞'], ['⎡','⎤'], ['⎝','⎠'], ['⧼','⧽'], ['⸨','⸩'], ['◖','◗'],
-        ['◢','◤'], ['◥','◣'], ['⸤','⸥'], ['⸦','⸧'], ['⸢','⸣'], ['',''],
+        ['◢','◤'], ['◥','◣'], ['⸤','⸥'], ['⸦','⸧'], ['⸢','⸣'], ['〘','〙'],
         ['〚','〛'], ['︗','︘'], ['︵','︶'], ['︹','︺'], ['︻','︼'], ['︽','︾'],
         ['﹁','﹂'], ['﹃','﹄'], ['︷','︸'], ['﹇','﹈'], ['︿','﹀'], ['﹛','﹜'],
         ['﹝','﹞'], ['（','）'], ['［','］'], ['｛','｝'], ['〈','〉'], ['「','」'],
@@ -425,10 +523,10 @@ function genFancy() {
         ['〚','〛'], ['〝','〞'], ['〞','〟'], ['«','»'], ['‹','›'], ['„','“'],
         ['‚','‘'], ['‛','’'], ['“','”'], ['‘','’'], ['‚','‛'], ['„','‟'],
         ['⸂','⸃'], ['⸄','⸅'], ['⸉','⸊'], ['⸌','⸍'], ['⸜','⸝'], ['⸠','⸡'],
-        ['〈','〉'], ['〈','〉'], ['❨','❩'], ['❪','❫'], ['❬','❭'], ['❮','❯'],
-        ['❰','❱'], ['❲','❳'], ['❴','❵'], ['⟅','⟆'], ['⟦','⟧'], ['⟨','⟩'],
-        ['⟪','⟫'], ['⟬','⟭'], ['⟮','⟯'], ['⦃','⦄'], ['⦅','⦆'], ['⦇','⦈'],
-        ['⦉','⦊'], ['⦋','⦌'], ['⦍','⦎'], ['⦏','⦐'], ['⦑','⦒'], ['⦓','⦔']
+        ['〈','〉'], ['❨','❩'], ['❪','❫'], ['❬','❭'], ['❮','❯'], ['❰','❱'],
+        ['❲','❳'], ['❴','❵'], ['⟅','⟆'], ['⟦','⟧'], ['⟨','⟩'], ['⟪','⟫'],
+        ['⟬','⟭'], ['⟮','⟯'], ['⦃','⦄'], ['⦅','⦆'], ['⦇','⦈'], ['⦉','⦊'],
+        ['⦋','⦌'], ['⦍','⦎'], ['⦏','⦐'], ['⦑','⦒'], ['⦓','⦔'], ['★','★']
     ];
     brackets.forEach(([left, right], i) => {
         styles.push([`Bracket ${i+1}`, `${left}${input}${right}`]);
@@ -520,7 +618,7 @@ function genCode(length) {
     document.getElementById('codeOutput').innerHTML = `<div class="output-box" onclick="copyText('${code}')">${code}</div>`;
 }
 
-// TOOL 4: FF MAX NAME GENERATOR
+// TOOL 4: FF MAX NAME GENERATOR - PURANA
 function genFF() {
     const text = document.getElementById('ffInput').value;
     const out = document.getElementById('ffOutput');
@@ -542,11 +640,84 @@ function genFF() {
         out.innerHTML += `<div class="output-box" onclick="copyText('${s}')">${s}</div>`;
     });
 }
+    <script>
+// ===== TOOL 5: FF PRO TOOLKIT - NAYA WALA =====
+function showFFProTab(tab) {
+    document.querySelectorAll('#ffpro-name-tab, #ffpro-guild-tab, #ffpro-bio-tab').forEach(t => t.style.display = 'none');
+    document.querySelectorAll('#ffpro-tab-name, #ffpro-tab-guild, #ffpro-tab-bio').forEach(b => {
+        b.style.background = '#1a1a1a';
+        b.style.border = '1px solid #333';
+    });
+    document.getElementById('ffpro-' + tab + '-tab').style.display = 'block';
+    document.getElementById('ffpro-tab-' + tab).style.background = '#ff1e6b';
+    document.getElementById('ffpro-tab-' + tab).style.border = 'none';
+    
+    if(tab === 'name') genFFPro();
+    if(tab === 'guild') genFFProGuild();
+    if(tab === 'bio') genFFProBio();
+}
+
+function toStylish(text, type = 'fancy') {
+    if (!text) return "";
+    const properCase = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+    const firstLetter = properCase.charAt(0);
+    const restSmallCaps = properCase.slice(1).split('').map(c => smallCapsMap[c.toLowerCase()] || c).join('');
+    if(type === 'dot') return firstLetter + '፝֟፝' + restSmallCaps;
+    if(type === 'mid') return firstLetter + '༒' + restSmallCaps;
+    if(type === 'upper') return text.toUpperCase();
+    return firstLetter + restSmallCaps;
+}
+
+function genFFPro() {
+    const input = document.getElementById('ffProInput').value.trim() || 'Oxie';
+    const out = document.getElementById('ffProOutput');
+    out.innerHTML = '';
+    
+    ffNameStyles.forEach(style => {
+        let finalName = style.template.replace(/NAME/g, toStylish(input));
+        if(style.name === "Dot Pro") finalName = toStylish(input, 'dot');
+        if(style.name === "QN + Dot") finalName = style.template.replace(/NAME_DOT/g, toStylish(input, 'dot'));
+        if(style.name.includes("King")) finalName = style.template.replace(/NAME_MID/g, toStylish(input, 'mid'));
+        if(style.name === "99% Headshot") finalName = style.template.replace(/NAME_UPPER/g, toStylish(input, 'upper'));
+        out.innerHTML += `<div class="output-box" onclick="copyText('${finalName.replace(/'/g,"\\'")}')"><span class="style-label">${style.name}</span>${finalName}</div>`;
+    });
+    document.getElementById('ffProCount').textContent = `${ffNameStyles.length} styles generated`;
+}
+
+function genFFProGuild() {
+    const input = document.getElementById('ffProGuildInput').value.trim() || 'OXIE';
+    const out = document.getElementById('ffProGuildOutput');
+    out.innerHTML = '';
+    ffGuildStyles.forEach(style => {
+        let finalName = style.template.replace(/GUILD/g, toStylish(input, 'upper'));
+        out.innerHTML += `<div class="output-box" onclick="copyText('${finalName.replace(/'/g,"\\'")}')"><span class="style-label">${style.name}</span>${finalName}</div>`;
+    });
+    document.getElementById('ffProGuildCount').textContent = `${ffGuildStyles.length} guild styles`;
+}
+
+function genFFProBio() {
+    const name = document.getElementById('ffProBioName').value.trim() || 'Oxie';
+    const age = document.getElementById('ffProBioAge').value.trim() || '18';
+    const rank = document.getElementById('ffProBioRank').value.trim() || 'Grandmaster';
+    const mood = document.getElementById('ffProBioMood').value;
+    const out = document.getElementById('ffProBioOutput');
+    out.innerHTML = '';
+    
+    ffBioTemplates[mood].forEach((template, i) => {
+        let finalBio = template.replace(/NAME/g, toStylish(name)).replace(/AGE/g, age).replace(/RANK/g, rank);
+        out.innerHTML += `<div class="output-box" onclick="copyText(\`${finalBio}\`)"><span class="style-label">Bio Style ${i+1}</span><pre style="white-space:pre-wrap;margin:0;font-family:inherit;">${finalBio}</pre></div>`;
+    });
+    document.getElementById('ffProBioCount').textContent = `${ffBioTemplates[mood].length} bio styles`;
+}
 
 // Auto-load
 window.onload = () => {
     document.getElementById('inputBox').value = 'Oxie';
     genFancy();
+    document.getElementById('ffInput').value = 'Oxie';
+    genFF();
+    document.getElementById('ffProInput').value = 'Oxie';
+    genFFPro();
 };
 </script>
 </body>
