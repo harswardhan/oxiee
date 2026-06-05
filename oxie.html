@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OXIE - Fancy Text Generator 170+</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            padding-bottom: 80px;
+        }
+    .header {
+            background: #000;
+            color: #fff;
+            padding: 15px;
+            margin: -20px -20px 20px -20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    .logo {
+            font-weight: bold;
+            font-size: 24px;
+        }
+    .logo span { color: #ff0000; }
+    .title {
+            text-align: center;
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 3px 3px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+            font-weight: bold;
+            margin: 30px 0;
+            font-family: 'Comic Sans MS', cursive;
+        }
+    .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        #inputBox {
+            width: 100%;
+            padding: 20px;
+            font-size: 24px;
+            border: 3px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+        #inputBox:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+    .count {
+            text-align: center;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    .output-box {
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 8px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.2s;
+            word-break: break-all;
+            position: relative;
+        }
+    .output-box:hover {
+            background: #f8f9fa;
+            border-color: #007bff;
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,123,255,0.2);
+        }
+    .style-label {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 10px;
+            color: #999;
+            font-weight: bold;
+        }
+    .copied {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            display: none;
+            z-index: 9999;
+            font-weight: bold;
+        }
+    .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            border-top: 3px solid #ff0000;
+        }
+    .footer a {
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    .footer a:hover {
+            color: #ff0000;
+            text-decoration: underline;
+        }
+    .insta-icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">OXIE<span>JAM</span></div>
+        <button style="background:#007bff;color:#fff;border:none;padding:10px 20px;border-radius:5px;cursor:pointer;">170+ STYLES</button>
+    </div>
+
+    <div class="container">
+        <h1 class="title">Fancy Text Generator</h1>
+
+        <input type="text" id="inputBox" placeholder="Type text here..." oninput="generateText()" autofocus>
+
+        <div class="count" id="count">0 styles generated</div>
+        <div id="outputs"></div>
+    </div>
+
+    <div class="footer">
+        <span class="insta-icon">📷</span>
+        Follow me on Instagram: <a href="https://instagram.com/oxie_45" target="_blank">@oxie_45</a>
+    </div>
+
+    <div class="copied" id="toast">Copied! ✓</div>
+
+<script>
+// CHARACTER MAPS
+const charMaps = {
+    'Small Caps': {'a':'ᴀ','b':'ʙ','c':'ᴄ','d':'ᴅ','e':'ᴇ','f':'ғ','g':'ɢ','h':'ʜ','i':'ɪ','j':'ᴊ','k':'ᴋ','l':'ʟ','m':'ᴍ','n':'ɴ','o':'ᴏ','p':'ᴘ','q':'ǫ','r':'ʀ','s':'s','t':'ᴛ','u':'ᴜ','v':'ᴠ','w':'ᴡ','x':'x','y':'ʏ','z':'ᴢ','A':'ᴀ','B':'ʙ','C':'ᴄ','D':'ᴅ','E':'ᴇ','F':'ғ','G':'ɢ','H':'ʜ','I':'ɪ','J':'ᴊ','K':'ᴋ','L':'ʟ','M':'ᴍ','N':'ɴ','O':'ᴏ','P':'ᴘ','Q':'ǫ','R':'ʀ','S':'s','T':'ᴛ','U':'ᴜ','V':'ᴠ','W':'ᴡ','X':'x','Y':'ʏ','Z':'ᴢ'},
+
+    'Upside Down': {'a':'ɐ','b':'q','c':'ɔ','d':'p','e':'ǝ','f':'ɟ','g':'ƃ','h':'ɥ','i':'ᴉ','j':'ɾ','k':'ʞ','l':'l','m':'ɯ','n':'u','o':'o','p':'d','q':'b','r':'ɹ','s':'s','t':'ʇ','u':'n','v':'ʌ','w':'ʍ','x':'x','y':'ʎ','z':'z','A':'∀','B':'𐐒','C':'Ɔ','D':'ᗡ','E':'Ǝ','F':'Ⅎ','G':'⅁','H':'H','I':'I','J':'ſ','K':'ʞ','L':'˥','M':'W','N':'N','O':'O','P':'Ԁ','Q':'Ό','R':'ᴿ','S':'S','T':'┴','U':'∩','V':'Λ','W':'M','X':'X','Y':'⅄','Z':'Z'},
+
+    'Bubble': {'a':'ⓐ','b':'ⓑ','c':'ⓒ','d':'ⓓ','e':'ⓔ','f':'ⓕ','g':'ⓖ','h':'ⓗ','i':'ⓘ','j':'ⓙ','k':'ⓚ','l':'ⓛ','m':'ⓜ','n':'ⓝ','o':'ⓞ','p':'ⓟ','q':'ⓠ','r':'ⓡ','s':'ⓢ','t':'ⓣ','u':'ⓤ','v':'ⓥ','w':'ⓦ','x':'ⓧ','y':'ⓨ','z':'ⓩ','A':'Ⓐ','B':'Ⓑ','C':'Ⓒ','D':'Ⓓ','E':'Ⓔ','F':'Ⓕ','G':'Ⓖ','H':'Ⓗ','I':'Ⓘ','J':'Ⓙ','K':'Ⓚ','L':'Ⓛ','M':'Ⓜ','N':'Ⓝ','O':'Ⓞ','P':'Ⓟ','Q':'Ⓠ','R':'Ⓡ','S':'Ⓢ','T':'Ⓣ','U':'Ⓤ','V':'Ⓥ','W':'Ⓦ','X':'Ⓧ','Y':'Ⓨ','Z':'Ⓩ'},
+
+    'Squared': {'a':'🄰','b':'🄱','c':'🄲','d':'🄳','e':'🄴','f':'🄵','g':'🄶','h':'🄷','i':'🄸','j':'🄹','k':'🄺','l':'🄻','m':'🄼','n':'🄽','o':'🄾','p':'🄿','q':'🅀','r':'🅁','s':'🅂','t':'🅃','u':'🅄','v':'🅅','w':'🅆','x':'🅇','y':'🅈','z':'🅉','A':'🄰','B':'🄱','C':'🄲','D':'🄳','E':'🄴','F':'🄵','G':'🄶','H':'🄷','I':'🄸','J':'🄹','K':'🄺','L':'🄻','M':'🄼','N':'🄽','O':'🄾','P':'🄿','Q':'🅀','R':'🅁','S':'🅂','T':'🅃','U':'🅄','V':'🅅','W':'🅆','X':'🅇','Y':'🅈','Z':'🅉'},
+
+    'Parenthesized': {'a':'⒜','b':'⒝','c':'⒞','d':'⒟','e':'⒠','f':'⒡','g':'⒢','h':'⒣','i':'⒤','j':'⒥','k':'⒦','l':'⒧','m':'⒨','n':'⒩','o':'⒪','p':'⒫','q':'⒬','r':'⒭','s':'⒮','t':'⒯','u':'⒰','v':'⒱','w':'⒲','x':'⒳','y':'⒴','z':'⒵','A':'⒜','B':'⒝','C':'⒞','D':'⒟','E':'⒠','F':'⒡','G':'⒢','H':'⒣','I':'⒤','J':'⒥','K':'⒦','L':'⒧','M':'⒨','N':'⒩','O':'⒪','P':'⒫','Q':'⒬','R':'⒭','S':'⒮','T':'⒯','U':'⒰','V':'⒱','W':'⒲','X':'⒳','Y':'⒴','Z':'⒵'},
+
+    'Circled Neg': {'a':'🅐','b':'🅑','c':'🅒','d':'🅓','e':'🅔','f':'🅕','g':'🅖','h':'🅗','i':'🅘','j':'🅙','k':'🅚','l':'🅛','m':'🅜','n':'🅝','o':'🅞','p':'🅟','q':'🅠','r':'🅡','s':'🅢','t':'🅣','u':'🅤','v':'🅥','w':'🅦','x':'🅧','y':'🅨','z':'🅩','A':'🅐','B':'🅑','C':'🅒','D':'🅓','E':'🅔','F':'🅕','G':'🅖','H':'🅗','I':'🅘','J':'🅙','K':'🅚','L':'🅛','M':'🅜','N':'🅝','O':'🅞','P':'🅟','Q':'🅠','R':'🅡','S':'🅢','T':'🅣','U':'🅤','V':'🅥','W':'🅦','X':'🅧','Y':'🅨','Z':'🅩'},
+
+    'Fullwidth': {'a':'ａ','b':'ｂ','c':'ｃ','d':'ｄ','e':'ｅ','f':'ｆ','g':'ｇ','h':'ｈ','i':'ｉ','j':'ｊ','k':'ｋ','l':'ｌ','m':'ｍ','n':'ｎ','o':'ｏ','p':'ｐ','q':'ｑ','r':'ｒ','s':'ｓ','t':'ｔ','u':'ｕ','v':'ｖ','w':'ｗ','x':'ｘ','y':'ｙ','z':'ｚ','A':'Ａ','B':'Ｂ','C':'Ｃ','D':'Ｄ','E':'Ｅ','F':'Ｆ','G':'Ｇ','H':'Ｈ','I':'Ｉ','J':'Ｊ','K':'Ｋ','L':'Ｌ','M':'Ｍ','N':'Ｎ','O':'Ｏ','P':'Ｐ','Q':'Ｑ','R':'Ｒ','S':'Ｓ','T':'Ｔ','U':'Ｕ','V':'Ｖ','W':'Ｗ','X':'Ｘ','Y':'Ｙ','Z':'Ｚ'},
+
+    'Morse Code': {'a':'·-','b':'-···','c':'-·-·','d':'-··','e':'·','f':'··-·','g':'--·','h':'····','i':'··','j':'·---','k':'-·-','l':'·-··','m':'--','n':'-·','o':'---','p':'·--·','q':'--·-','r':'·-·','s':'···','t':'-','u':'··-','v':'···-','w':'·--','x':'-··-','y':'-·--','z':'--··','A':'·-','B':'-···','C':'-·-·','D':'-··','E':'·','F':'··-·','G':'--·','H':'····','I':'··','J':'·---','K':'-·-','L':'·-··','M':'--','N':'-·','O':'---','P':'·--·','Q':'--·-','R':'·-·','S':'···','T':'-','U':'··-','V':'···-','W':'·--','X':'-··-','Y':'-·--','Z':'--··'}
+};
+
+function applyMap(text, map) {
+    return text.split('').map(c => map[c] || c).join('');
+}
+
+function toUni(text, offset1, offset2) {
+    return text.split('').map(c => {
+        const code = c.charCodeAt(0);
+        if(code >= 65 && code <= 90) return String.fromCodePoint(code + offset1);
+        if(code >= 97 && code <= 122) return String.fromCodePoint(code + offset2);
+        return c;
+    }).join('');
+}
+
+function addDiacritic(text, diacritic) {
+    return text.split('').join(diacritic) + diacritic;
+}
+
+function generateText() {
+    const input = document.getElementById('inputBox').value;
+    const outputs = document.getElementById('outputs');
+
+    if(!input) {
+        outputs.innerHTML = '';
+        document.getElementById('count').textContent = '0 styles generated';
+        return;
+    }
+
+    const styles = [];
+
+    // 1. Basic Cases - 7 styles
+    styles.push(['Normal', input]);
+    styles.push(['UPPERCASE', input.toUpperCase()]);
+    styles.push(['lowercase', input.toLowerCase()]);
+    styles.push(['Title Case', input.replace(/\b\w/g, c => c.toUpperCase())]);
+    styles.push(['aLtErNaTe', input.split('').map((c,i)=>i%2?c.toUpperCase():c.toLowerCase()).join('')]);
+    styles.push(['InVeRsE', input.split('').map((c,i)=>i%2?c.toLowerCase():c.toUpperCase()).join('')]);
+    styles.push(['Reverse', input.split('').reverse().join('')]);
+
+    // 2. Spacing Styles - 12 styles
+    styles.push(['S p a c e d', input.split('').join(' ')]);
+    styles.push(['D.o.t.t.e.d', input.split('').join('.')]);
+    styles.push(['U_n_d_e_r', input.split('').join('_')]);
+    styles.push(['D-a-s-h-e-d', input.split('').join('-')]);
+    styles.push(['S~t~i~l~d~e', input.split('').join('~')]);
+    styles.push(['S★t★a★r', input.split('').join('★')]);
+    styles.push(['V|e|r|t|i|c|a|l', input.split('').join('|')]);
+    styles.push(['S/l/a/s/h', input.split('').join('/')]);
+    styles.push(['B\\a\\c\\k', input.split('').join('\\')]);
+    styles.push(['P+l+u+s', input.split('').join('+')]);
+    styles.push(['E=q=u=a=l', input.split('').join('=')]);
+    styles.push(['A&r&r&o&w', input.split('').join('&')]);
+
+    // 3. Character Maps - 8 maps
+    Object.entries(charMaps).forEach(([name, map]) => {
+        styles.push([name, applyMap(input, map)]);
+    });
+
+    // 4. Unicode Math Fonts - 13 fonts
+    const unicodeFonts = [
+        ['Bold', 120211, 120205],
+        ['Italic', 120263, 120257],
+        ['Bold Italic', 120315, 120309],
+        ['Script', 119951, 119945],
+        ['Bold Script', 120003, 119997],
+        ['Fraktur', 120068, 120062],
+        ['Bold Fraktur', 120172, 120166],
+        ['Double Struck', 120055, 120049],
+        ['Sans Serif', 120159, 120153],
+        ['Sans Bold', 120211, 120205],
+        ['Sans Italic', 120263, 120257],
+        ['Sans Bold Italic', 120315, 120309],
+        ['Monospace', 120367, 120361]
+    ];
+
+    unicodeFonts.forEach(([name, o1, o2]) => {
+        styles.push([name, toUni(input, o1, o2)]);
+    });
+
+    // 5. Diacritic/Combining Marks - 35 styles
+    const diacritics = [
+        ['Strike', '̶'], ['Underline', '̲'], ['Double Underline', '̳'],
+        ['Overline', '̅'], ['Wavy', '̴'], ['Dotted Below', '̣'],
+        ['Dash Below', '̱'], ['Double Overline', '̿'], ['Zigzag', '̰'],
+        ['Left Arrow', '͔'], ['Right Arrow', '͕'], ['Up Arrow', '͗'],
+        ['Down Arrow', '͘'], ['Cross', '̽'], ['Ring', '̊'],
+        ['Tilde', '̃'], ['Bridge', '̺'], ['Inverted Bridge', '̻'],
+        ['Square', '⃞'], ['Diamond', '⃟'], ['Circle', '⃝'],
+        ['Triangle', '⃤'], ['X Mark', '⃠'], ['Plus', '⃜'],
+        ['Dot Above', '̇'], ['Double Dot', '̈'], ['Triple Dot', '⃛'],
+        ['Curl', '̾'], ['Comma Above', '̓'], ['Comma Below', '̦'],
+        ['Cedilla', '̧'], ['Hook Above', '̉'], ['Horn', '̛'],
+        ['Palatalized', '̑'], ['Retroflex', '̢']
+    ];
+
+    diacritics.forEach(([name, mark]) => {
+        styles.push([name, addDiacritic(input, mark)]);
+    });
+
+    // 6. Bracket Styles - 35 styles
+    const brackets = [
+        ['꧁King꧂', '꧁', '꧂'], ['『Japanese』', '『', '』'], ['《Chinese》', '《', '》'],
+        ['', '', ''], ['', ''], ['〔Tortoise〕', '〔', '〕'],
+        ['〖Double〗', '〖', '〗'], ['⦅Math⦆', '⦅', '⦆'], ['⦇White⦈', '⦇', '⦈'],
+        ['⟦Double⟧', '⟦', '⟧'], ['⟨Angle⟩', '⟨', '⟩'], ['⟪Double⟫', '⟪', '⟫'],
+        ['❮Ornate❯', '❮', '❯'], ['❰Bold❱', '❰', '❱'], ['❲Round❳', '❲', '❳'],
+        ['❴Curly❵', '❴', '❵'], ['⌈Top⌉', '⌈', '⌉'], ['⌊Bottom⌋', '⌊', '⌋'],
+        ['⎛Large⎞', '⎛', '⎞'], ['⎡Square⎤', '⎡', '⎤'], ['⎝Round⎠', '⎝', '⎠'],
+        ['⧼Curly⧽', '⧼', '⧽'], ['⸨Double⸩', '⸨', '⸩'], ['◖White◗', '◖', '◗'],
+        ['◢Black◤', '◢', '◤'], ['◥Triangle◣', '◥', '◣'], ['⸤Heavy⸥', '⸤', '⸥'],
+        ['⸦Curved⸧', '⸦', '⸧'], ['⸢Corner⸣', '⸢', '⸣'], ['', ''],
+        ['〚White〛', '〚', '〛'], ['︗Top︘', '︗', '︘'], ['︵Bottom︶', '︵', '︶'],
+        ['︹Heavy︺', '︹', '︺'], ['︻Square︼', '︻', '︼']
+    ];
+
+    brackets.forEach(([name, left, right]) => {
+        styles.push([name, `${left}${input}${right}`]);
+    });
+
+    // 7. Symbol Decorations - 35 styles
+    const decorations = [
+        ['★Star★', '★', '★'], ['☆White Star☆', '☆', '☆'], ['⚡Thunder⚡', '⚡'],
+        ['🔥Fire🔥', '🔥'], ['💀Skull💀', '💀', '💀'], ['👑Crown👑', '👑', '👑'],
+        ['✨Sparkle✨', '✨'], ['💎Diamond💎', '💎', '💎'], ['🎯Target🎯', '🎯'],
+        ['⚔Sword⚔', '⚔'], ['🛡Shield🛡', '🛡', '🛡'], ['⚜Fleur⚜', '⚜', '⚜'],
+        ['☠Poison☠', '☠', '☠'], ['♠Spade♠', '♠', '♠'], ['♣Club♣', '♣'],
+        ['♥Heart♥', '♥', '♥'], ['♦Diamond♦', '♦', '♦'], ['♛Queen♛', '♛'],
+        ['♜Rook♜', '♜', '♜'], ['⚙Gear⚙', '⚙', '⚙'], ['☢Radioactive☢', '☢'],
+        ['☣Biohazard☣', '☣'], ['⚠Warning⚠', '⚠', '⚠'], ['✓Check✓', '✓', '✓'],
+        ['✗Cross✗', '✗', '✗'], ['✘Heavy Cross✘', '✘'], ['✚Plus✚', '✚'],
+        ['✦Star✦', '✦', '✦'], ['✧White Star✧', '✧', '✧'], ['✩Outlined✩', '✩'],
+        ['✪Circled✪', '✪', '✪'], ['✫Star Burst✫', '✫'], ['✬Heavy✬', '✬'],
+        ['✭Outlined✭', '✭'], ['✮Star✮', '✮']
+    ];
+
+    decorations.forEach(([name, left, right]) => {
+        styles.push([name, `${left}${input}${right}`]);
+    });
+
+    // 8. Free Fire Max Styles - 15 styles
+    const ffStyles = [
+        ['FF King', `꧁༒${input}༒꧂`],
+        ['FF Demon', `么༺${input}༻么`],
+        ['FF Cross', `×͜×★${input}★×͜×`],
+        ['FF Thunder', `乂⚡${input}⚡乂`],
+        ['FF Pro', `◥꧁${input}꧂◤`],
+        ['FF Elite', `ツ${input}ツ`],
+        ['FF Legend', `★彡${input}彡★`],
+        ['FF Boss', `Ø${input}Ø`],
+        ['FF Killer', `⎝☠${input}☠⎠`],
+        ['FF God', `♛${input}♛`],
+        ['FF Ultra', `꧁༺${input}༻꧂`],
+        ['FF Master', `么★彡${input}彡★么`],
+        ['FF Devil', `×͜×☠${input}☠×͜×`],
+        ['FF Hero', `◥★${input}★◤`],
+        ['FF VIP', `乂♛${input}♛乂`]
+    ];
+
+    ffStyles.forEach(([name, text]) => {
+        styles.push([name, text]);
+    });
+
+    // 9. Glitch/Corrupted Styles - 10 styles
+    const glitch = [
+        ['Zalgo 1', input.split('').map(c => c + '̸').join('')],
+        ['Zalgo 2', input.split('').map(c => c + '̴̶̷').join('')],
+        ['Zalgo 3', input.split('').map(c => c + '̾̿̽').join('')],
+        ['Corrupted', input.split('').map(c => c + '͠͡').join('')],
+        ['Hacked', input.split('').map(c => c + '̸̡').join('')],
+        ['Glitch', input.split('').map(c => c + '҉').join('')],
+        ['Destroyed', input.split('').map(c => c + '̸̡̧̢').join('')],
+        ['Void', input.split('').map(c => c + '̸̴̶̷').join('')],
+        ['Chaos', input.split('').map(c => c + '͜͡').join('')],
+        ['Error', input.split('').map(c => c + '҉̸').join('')]
+    ];
+
+    glitch.forEach(([name, text]) => {
+        styles.push([name, text]);
+    });
+
+    // Render
+    outputs.innerHTML = styles.map(([name, text]) =>
+        `<div class="output-box" onclick="copyText('${text.replace(/'/g,"\\'")}')">
+            <span class="style-label">${name}</span>
+            ${text}
+        </div>`
+    ).join('');
+
+    document.getElementById('count').textContent = `${styles.length} styles generated`;
+}
+
+function copyText(text) {
+    navigator.clipboard.writeText(text);
+    const toast = document.getElementById('toast');
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 1000);
+}
+
+// Auto-load
+window.onload = () => {
+    document.getElementById('inputBox').value = 'Oxiee';
+    generateText();
+};
+</script>
+</body>
+</html>
